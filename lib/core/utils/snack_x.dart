@@ -1,0 +1,39 @@
+import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
+import 'package:zawj/core/utils/app_colors.dart';
+import 'package:zawj/main.dart';
+
+///
+class SnackX {
+  /// a method to show [SnackX]
+  static void showSnackBar({
+    required String message,
+    required BuildContext? context,
+  }) {
+    final currentContext = context ?? navigatorKey.currentContext;
+    if (currentContext != null) {
+      ScaffoldMessenger.of(currentContext).showSnackBar(
+        SnackBar(
+          duration: const Duration(seconds: 3),
+          content: SizedBox(
+            height: 4.h,
+            child: Center(
+              child: Text(
+                message,
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(currentContext).textTheme.bodyMedium!.copyWith(
+                      color: AppColors.greenWhite,
+                    ),
+              ),
+            ),
+          ),
+          backgroundColor: AppColors.lipstickRed,
+        ),
+      );
+    } else {
+      throw Exception('context is null');
+    }
+  }
+}
