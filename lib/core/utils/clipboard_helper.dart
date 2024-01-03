@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:zawj/core/utils/toast_x.dart';
-import 'package:zawj/generated/l10n.dart';
+import 'package:helper/core/utils/toast_x.dart';
+import 'package:helper/generated/l10n.dart';
 
 /// CopyHelper is a helper class to copy text to clipboard and show Toast
 class ClipboardHelper {

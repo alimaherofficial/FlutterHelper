@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:zawj/config/routes/app_routes.dart';
-import 'package:zawj/features/Splash/presentation/pages/splash_view.dart';
+import 'package:helper/config/routes/app_routes.dart';
+import 'package:helper/features/Splash/presentation/pages/splash_view.dart';
 
 /// Application routes
 class AppRoutes {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:helper/core/utils/theme_helper.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:zawj/config/themes/app_theme.dart';
 
 /// this class is used to show shimmer loading
 class ShimmerLoading extends StatelessWidget {

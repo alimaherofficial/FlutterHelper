@@ -1,290 +1,200 @@
-// ignore_for_file: public_member_api_docs
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:helper/core/utils/app_colors.dart';
+import 'package:helper/core/utils/app_strings.dart';
+import 'package:helper/core/utils/font_size_helper.dart';
+import 'package:helper/core/utils/styles_helper.dart';
 import 'package:sizer/sizer.dart';
-import 'package:zawj/core/utils/app_colors.dart';
-import 'package:zawj/core/utils/app_strings.dart';
 
-/// this class is used to manage the app theme
-class ThemeHelper {
-  /// get the current theme mode
-  static bool isDarkTheme(BuildContext context) {
-    // if (MainCubit.get(context).currentThemeMode == ThemeMode.system) {
-    //   return MediaQuery.of(context).platformBrightness == Brightness.dark;
-    // }
-    // return MainCubit.get(context).currentThemeMode == ThemeMode.dark;
-    return false;
-  }
-
-  static AppColors appColors = AppColors();
-
-  /// change the system ui overlay style
-  static void changeSystemUiOverlayStyle(BuildContext context) {
-    if (isDarkTheme(context)) {
-      SystemChrome.setEnabledSystemUIMode(
-        SystemUiMode.manual,
-        overlays: SystemUiOverlay.values,
-      );
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarColor: appColors.woodSmoke,
-          statusBarIconBrightness: Brightness.light,
-        ),
-      );
-    } else {
-      SystemChrome.setEnabledSystemUIMode(
-        SystemUiMode.manual,
-        overlays: SystemUiOverlay.values,
-      );
-      SystemChrome.setSystemUIOverlayStyle(
-        const SystemUiOverlayStyle(
-          statusBarColor: Colors.white,
-          statusBarIconBrightness: Brightness.dark,
-        ),
-      );
-    }
-  }
-
-  /// the app theme data
-  static ThemeData appThemeWhite(String lang) {
+/// A class that provides a light theme configuration for the application.
+class AppTheme {
+  /// Returns a [ThemeData] object representing the light theme of the app.
+  ///
+  /// The `lang` argument specifies the language for which the font family
+  /// should be selected.
+  ///
+  /// The returned theme has its various properties configured, such as
+  /// text styles, colors, etc.
+  static ThemeData theme(String lang) {
     return ThemeData(
+      /// useMaterial3.
+      useMaterial3: true,
+      // Define the primary color swatch.
       primarySwatch: AppColors.primarySwatchColor,
+
+      // Select the font family based on the language setting.
       fontFamily: lang == AppStrings.arabicCode
           ? AppStrings.arabicFontFamily
           : AppStrings.englishFontFamily,
 
-      /// [primaryColor] the same in light and dark mode
-      primaryColor: AppColors.lipstickRed,
+      textSelectionTheme: TextSelectionThemeData(
+        selectionColor: AppColors.disabledPrimary,
+        selectionHandleColor: AppColors.text,
+        cursorColor: AppColors.text,
+      ),
 
-      /// [dividerColor] is used white in dark mode
-      dividerColor: appColors.woodSmoke,
+      // Various color configurations.
+      primaryColor: AppColors.primary,
+      hintColor: AppColors.text.withOpacity(0.5),
+      disabledColor: AppColors.disabledPrimary,
+      dividerColor: AppColors.text,
+      focusColor: Colors.transparent,
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      hoverColor: Colors.transparent,
+      shadowColor: Colors.transparent,
+      secondaryHeaderColor: AppColors.white,
+      cardColor: AppColors.white,
+      scaffoldBackgroundColor: AppColors.background,
 
-      /// [hintColor] is used white with opacity 0.5 in dark mode
-      hintColor: appColors.woodSmoke.withOpacity(0.5),
+      /// Set the button theme.
+      buttonTheme: const ButtonThemeData(
+        buttonColor: AppColors.primary,
+        focusColor: AppColors.primary,
+      ),
 
-      /// [brightness] is used to change the status bar color
+      // Set the brightness level.
       brightness: Brightness.light,
 
-      /// [splashColor] the same in light and dark mode
-      splashColor: appColors.woodSmoke,
+      // // Configure the AppBar theme.
+      // appBarTheme: const AppBarTheme(
+      //   titleTextStyle: TextStyle(
+      //     color: AppColors.text,
+      //   ),
+      //   centerTitle: false,
+      //   color: AppColors.background,
+      // ),
 
-      /// [hoverColor] the same in light and dark mode
-      hoverColor: AppColors.greenWhite,
-
-      /// [cardColor] is used dark Grey in dark mode
-      cardColor: AppColors.grey,
-
-      /// [shadowColor] is used wood white in dark mode
-      shadowColor: appColors.woodSmoke,
-
-      /// [scaffoldBackgroundColor] is used woodSmoke in dark mode
-      scaffoldBackgroundColor: appColors.white,
-
-      appBarTheme: AppBarTheme(
-        titleTextStyle: TextStyle(
-          /// [color] is used woodSmoke in dark mode
-          color: AppColors.greenWhite,
-        ),
-        centerTitle: true,
-
-        /// [color] is used greenWhite in dark mode
-        color: appColors.woodSmoke,
-      ),
+      // Define text styles for different use-cases.
       textTheme: TextTheme(
-        /// Display Huge = 130
-        headlineLarge: TextStyle(
-          fontSize: 126.sp,
-          fontWeight: FontWeight.w700,
-        ),
+        /// Used for labels on upgrader components.
+        labelLarge: getBoldStyle(),
 
-        /// Label Large For Upgrader
-        labelLarge: TextStyle(
-          fontSize: 13.sp,
-          fontWeight: FontWeight.w700,
-        ),
+        /// Used for text fields labels.
+        labelMedium: getMediumStyle(fontSize: FontSizeHelper.s10),
 
-        /// Label Medium For Marquee
-        labelMedium: TextStyle(
-          fontSize: 108.sp,
-          fontWeight: FontWeight.w700,
-        ),
+        /// Used for seen and requested texts.
+        labelSmall: getSemiBoldStyle(fontSize: FontSizeHelper.s9),
 
-        /// Display Large = 32
-        displayLarge: TextStyle(
-          fontSize: 29.sp,
-          fontWeight: FontWeight.w700,
-        ),
+        /// Used for main headers.
+        displayLarge: getSemiBoldStyle(fontSize: FontSizeHelper.s27),
 
-        /// Display Medium = 24
-        displayMedium: TextStyle(
-          fontSize: 21.sp,
-          fontWeight: FontWeight.w600,
-        ),
+        /// Used for sub-headers and home information and hints.
+        /// Use it also for messages but with FontWeight.w500
+        displayMedium: getRegularStyle(fontSize: FontSizeHelper.s12),
 
-        /// Display Small = 18
-        displaySmall: TextStyle(
-          fontSize: 15.sp,
-          fontWeight: FontWeight.w600,
-        ),
+        /// Used for sub-action text.
+        displaySmall: getMediumStyle(),
 
-        /// Title Large = 18
-        titleLarge: TextStyle(
-          fontSize: 15.sp,
-          fontWeight: FontWeight.w600,
-        ),
+        /// Used for prominent titles and big circle avatar names.
+        /// If you need to use it for the smaller avatar make it 17.sp
+        titleLarge: getSemiBoldStyle(fontSize: FontSizeHelper.s22),
 
-        /// Title Medium = 16
-        titleMedium: TextStyle(
-          fontSize: 13.sp,
-          fontWeight: FontWeight.w600,
-        ),
+        /// Used for subtitles and buttons titles.
+        titleMedium: getSemiBoldStyle(),
 
-        /// Title Small = 14 (Default)
-        titleSmall: TextStyle(
-          fontSize: 11.sp,
-          fontWeight: FontWeight.w600,
-        ),
+        /// Used for less prominent titles and online status container.
+        titleSmall: getSemiBoldStyle(fontSize: FontSizeHelper.s7),
 
-        /// Body Large = 16
-        bodyLarge: TextStyle(
-          fontSize: 13.sp,
-          fontWeight: FontWeight.w600,
-        ),
+        /// Used for information text.
+        headlineLarge: getRegularStyle(),
 
-        // Body Regular = 16
-        headlineMedium: TextStyle(
-          fontSize: 13.sp,
-          fontWeight: FontWeight.w400,
-        ),
+        /// Used for navigation bar titles and preferences containers.
+        headlineMedium: getMediumStyle(fontSize: FontSizeHelper.s11),
 
-        /// Body Semi = 14
-        headlineSmall: TextStyle(
-          fontSize: 11.sp,
-          fontWeight: FontWeight.w400,
-        ),
+        /// Used for secondary body text.
+        headlineSmall: getRegularStyle(fontSize: FontSizeHelper.s11),
 
-        /// Body Medium = 14
-        bodyMedium: TextStyle(
-          fontSize: 11.sp,
-          fontWeight: FontWeight.w500,
-        ),
+        /// Used for bold text.
+        bodyLarge: getBoldStyle(),
 
-        /// Body Small = 12
-        bodySmall: TextStyle(
-          fontSize: 9.sp,
-          fontWeight: FontWeight.w400,
-        ),
+        /// Used for standard body text.
+        bodyMedium: getRegularStyle(fontSize: FontSizeHelper.s10),
+
+        /// Used for smaller body text.
+        /// Use it also for last seen message but with FontWeight.w500
+        bodySmall: getRegularStyle(fontSize: FontSizeHelper.s9),
       ),
-    );
-  }
 
-  /// the app theme data for dark mode
-  static ThemeData appThemeDark(String lang) {
-    return ThemeData(
-      primarySwatch: AppColors.primarySwatchColor,
-      fontFamily: lang == AppStrings.arabicCode
-          ? AppStrings.arabicFontFamily
-          : AppStrings.englishFontFamily,
-      primaryColor: AppColors.lipstickRed,
-      dividerColor: appColors.white,
-      hintColor: appColors.white.withOpacity(0.5),
-      brightness: Brightness.dark,
-      splashColor: appColors.woodSmoke,
-      hoverColor: AppColors.greenWhite,
-      cardColor: AppColors.darkGrey,
-      scaffoldBackgroundColor: appColors.woodSmoke,
-      shadowColor: appColors.white,
-      appBarTheme: AppBarTheme(
-        titleTextStyle: TextStyle(
-          color: appColors.woodSmoke,
-        ),
-        centerTitle: true,
-        color: AppColors.greenWhite,
-      ),
-      textTheme: TextTheme(
-        /// Display Huge = 130
-        headlineLarge: TextStyle(
-          fontSize: 126.sp,
-          fontWeight: FontWeight.w700,
-        ),
+      // dropdownMenuTheme: DropdownMenuThemeData(
+      //   inputDecorationTheme: InputDecorationTheme(
+      //     filled: true,
+      //     hintStyle: TextStyle(
+      //       fontSize: 13.sp,
+      //       fontWeight: FontWeight.w700,
+      //     ),
+      //     contentPadding: EdgeInsets.symmetric(
+      //       vertical: 1.8.h,
+      //       horizontal: 4.w,
+      //     ),
+      //     border: OutlineInputBorder(
+      //       borderRadius: BorderRadius.circular(8),
+      //     ),
+      //     enabledBorder: OutlineInputBorder(
+      //       borderRadius: BorderRadius.circular(8),
+      //       borderSide: const BorderSide(
+      //         color: AppColors.normalBorder,
+      //       ),
+      //     ),
+      //     errorBorder: const OutlineInputBorder(
+      //       borderSide: BorderSide(color: AppColors.error),
+      //       borderRadius: BorderRadius.all(Radius.circular(6)),
+      //     ),
+      //     errorStyle: getRegularStyle(
+      //       fontSize: FontSizeHelper.s10,
+      //       color: AppColors.error,
+      //     ),
+      //     focusedBorder: OutlineInputBorder(
+      //       borderRadius: BorderRadius.circular(8),
+      //       borderSide: const BorderSide(color: AppColors.normalBorder),
+      //     ),
+      //     focusedErrorBorder: const OutlineInputBorder(
+      //       borderSide: BorderSide(color: AppColors.normalBorder),
+      //       borderRadius: BorderRadius.all(
+      //         Radius.circular(6),
+      //       ),
+      //     ),
+      //     // Add any other properties that you want to customize
+      //   ),
+      // ),
 
-        /// Label Large For Upgrader
-        labelLarge: TextStyle(
-          fontSize: 13.sp,
-          fontWeight: FontWeight.w700,
-        ),
-
-        /// Label Medium For Marquee
-        labelMedium: TextStyle(
-          fontSize: 108.sp,
-          fontWeight: FontWeight.w700,
-        ),
-
-        /// Display Large = 32
-        displayLarge: TextStyle(
-          fontSize: 29.sp,
-          fontWeight: FontWeight.w700,
-        ),
-
-        /// Display Medium = 24
-        displayMedium: TextStyle(
-          fontSize: 21.sp,
-          fontWeight: FontWeight.w600,
-        ),
-
-        /// Display Small = 18
-        displaySmall: TextStyle(
-          fontSize: 15.sp,
-          fontWeight: FontWeight.w600,
-        ),
-
-        /// Title Large = 18
-        titleLarge: TextStyle(
-          fontSize: 15.sp,
-          fontWeight: FontWeight.w600,
-        ),
-
-        /// Title Medium = 16
-        titleMedium: TextStyle(
-          fontSize: 13.sp,
-          fontWeight: FontWeight.w600,
-        ),
-
-        /// Title Small = 14 (Default)
-        titleSmall: TextStyle(
-          fontSize: 11.sp,
-          fontWeight: FontWeight.w600,
-        ),
-
-        /// Body Large = 16
-        bodyLarge: TextStyle(
-          fontSize: 13.sp,
-          fontWeight: FontWeight.w600,
-        ),
-
-        // Body Regular = 16
-        headlineMedium: TextStyle(
-          fontSize: 13.sp,
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        hintStyle: TextStyle(
+          fontSize: 12.sp,
           fontWeight: FontWeight.w400,
+          color: AppColors.text.withOpacity(0.9),
         ),
-
-        /// Body Semi = 14
-        headlineSmall: TextStyle(
-          fontSize: 11.sp,
-          fontWeight: FontWeight.w400,
+        contentPadding: EdgeInsets.symmetric(
+          vertical: 1.8.h,
+          horizontal: 4.w,
         ),
-
-        /// Body Medium = 14
-        bodyMedium: TextStyle(
-          fontSize: 11.sp,
-          fontWeight: FontWeight.w500,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          // borderSide: BorderSide.none,
         ),
-
-        /// Body Small = 12
-        bodySmall: TextStyle(
-          fontSize: 9.sp,
-          fontWeight: FontWeight.w400,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(
+            color: AppColors.normalBorder,
+          ),
+        ),
+        errorBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: AppColors.error),
+          borderRadius: BorderRadius.all(Radius.circular(6)),
+        ),
+        errorStyle: getRegularStyle(
+          fontSize: FontSizeHelper.s10,
+          color: AppColors.error,
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(color: AppColors.normalBorder),
+        ),
+        focusedErrorBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: AppColors.normalBorder),
+          borderRadius: BorderRadius.all(
+            Radius.circular(6),
+          ),
         ),
       ),
     );

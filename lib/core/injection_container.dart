@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
+import 'package:helper/core/injection_container.config.dart';
 import 'package:injectable/injectable.dart';
-import 'package:zawj/core/injection_container.config.dart';
 
 /// this class is used to manage the dependency injection
 final getIt = GetIt.instance;

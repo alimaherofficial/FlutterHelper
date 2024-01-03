@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:helper/core/utils/app_colors.dart';
+import 'package:helper/main.dart';
 import 'package:sizer/sizer.dart';
-import 'package:zawj/core/utils/app_colors.dart';
-import 'package:zawj/main.dart';
 
 ///
 class SnackX {
@@ -29,7 +29,7 @@ class SnackX {
               ),
             ),
           ),
-          backgroundColor: AppColors.lipstickRed,
+          backgroundColor: AppColors.primary,
         ),
       );
     } else {

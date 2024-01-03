@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:zawj/core/utils/app_strings.dart';
-import 'package:zawj/core/utils/extensions.dart';
+import 'package:helper/core/utils/app_strings.dart';
+import 'package:helper/core/utils/extensions.dart';
 
 /// this class is used to manage the failures
 abstract class Failure {

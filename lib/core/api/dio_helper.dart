@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:zawj/core/api/endpoints.dart';
+import 'package:helper/core/api/endpoints.dart';
 
 /// this class is used to manage the dio requests
 class DioHelper {

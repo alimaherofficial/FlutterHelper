@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:helper/main.dart';
 import 'package:sizer/sizer.dart';
-import 'package:zawj/main.dart';
 
 /// this class is used to show a custom toast
 class ToastX {

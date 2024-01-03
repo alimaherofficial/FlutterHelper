@@ -3,9 +3,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:helper/core/utils/app_strings.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:injectable/injectable.dart';
-import 'package:zawj/core/utils/app_strings.dart';
 
 enum DataBoxes {
   auth,

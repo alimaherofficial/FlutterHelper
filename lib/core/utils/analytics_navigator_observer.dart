@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:zawj/core/utils/analytics_helper.dart';
+import 'package:helper/core/utils/analytics_helper.dart';
 
 /// A navigator observer that uses AnalyticsHelper.setCurrentScreen to send
 class AnalyticsNavigatorObserver extends NavigatorObserver {

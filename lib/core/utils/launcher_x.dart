@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:helper/core/utils/toast_x.dart';
 import 'package:url_launcher/url_launcher_string.dart';
-import 'package:zawj/core/utils/toast_x.dart';
 
 /// this class is used to lunch Url
 class LauncherX {

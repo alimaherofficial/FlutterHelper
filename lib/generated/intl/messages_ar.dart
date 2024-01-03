@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "copiedToClipboard":
-            MessageLookupByLibrary.simpleMessage("Copied to clipboard")
+            MessageLookupByLibrary.simpleMessage("Copied to clipboard"),
+        "tryAgain": MessageLookupByLibrary.simpleMessage("Try Again")
       };
 }
