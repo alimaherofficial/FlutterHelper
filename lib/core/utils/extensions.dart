@@ -2,6 +2,8 @@
 
 import 'dart:convert';
 
+import 'package:logger/logger.dart';
+
 /// Extensions for [String] class.
 extension CapExtension on String {
   /// Capitalizes the first letter of the string.
@@ -95,6 +97,26 @@ extension FormatDate on DateTime {
   /// Formate the date to day/month/year.
   /// Example: 1/1/2023
   String get toDayMonthYear => '$day/$month/$year';
+}
+
+/// Extensions for Object
+extension ObjectExtension on Object {
+  void get log {
+    final logger = Logger();
+    if (toString().contains('error') ||
+        toString().contains('exception') ||
+        toString().contains('Failure') ||
+        toString().contains('Exception') ||
+        toString().contains('wrong')) {
+      logger.e(this);
+    } else if (toString().contains('debug')) {
+      logger.d(this);
+    } else if (toString().contains('warning')) {
+      logger.w(this);
+    } else {
+      logger.i(this);
+    }
+  }
 }
 
 /// Months enum.
