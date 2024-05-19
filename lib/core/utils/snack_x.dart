@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:helper/core/extensions/num_extensions.dart';
 import 'package:helper/core/utils/app_colors.dart';
 import 'package:helper/main.dart';
-import 'package:sizer/sizer.dart';
 
 ///
 class SnackX {

@@ -42,7 +42,7 @@ class ThemeHelper {
       );
       SystemChrome.setSystemUIOverlayStyle(
         const SystemUiOverlayStyle(
-          statusBarColor: AppColors.white,
+          statusBarColor: AppColors.background,
           statusBarIconBrightness: Brightness.dark,
         ),
       );

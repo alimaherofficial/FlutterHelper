@@ -1,10 +1,10 @@
 import 'dart:async' show StreamController;
 
 import 'package:flutter/material.dart';
+import 'package:helper/core/extensions/num_extensions.dart';
 import 'package:helper/core/utils/assets.dart';
 import 'package:helper/core/utils/sized_x.dart';
 import 'package:lottie/lottie.dart';
-import 'package:sizer/sizer.dart';
 
 /// LoadingScreen
 class Loading {

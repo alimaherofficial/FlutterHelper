@@ -1,14 +1,20 @@
+// import 'package:device_preview/device_preview.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:helper/app.dart';
+import 'package:helper/config/routes/app_router.dart';
 import 'package:helper/core/injection_container.dart';
 import 'package:helper/core/utils/bloc_observer.dart';
 import 'package:helper/core/utils/database_manager.dart';
+import 'package:helper/firebase_options.dart';
+import 'package:upgrader/upgrader.dart';
 
-/// A global key that will uniquely identify the Scaffold
-final GlobalKey<ScaffoldMessengerState> rootScaffoldMessengerKey =
-    GlobalKey<ScaffoldMessengerState>();
+/// The [AppRouter] instance that is used to navigate across the app.
+final appRouter = AppRouter();
 
 /// A global key that will uniquely identify the Navigator
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -21,25 +27,36 @@ void main() async {
   await Future.wait<dynamic>([
     configureDependencies(),
     DatabaseManager.initHive(),
-    // Firebase.initializeApp(
-    //   options: DefaultFirebaseOptions.currentPlatform,
-    // ),
-    // Upgrader.sharedInstance.initialize(),
+    Firebase.initializeApp(
+      // TODO(anyone): Add your own Firebase project configuration here
+      options: DefaultFirebaseOptions.currentPlatform,
+    ),
+    Upgrader.sharedInstance.initialize(),
   ]);
 
   // Only call clearSavedSettings() during testing to reset internal values.
   // await Upgrader.clearSavedSettings(); // REMOVE this for release builds
-
+  // test();
   // Pass all uncaught "fatal" errors from the framework to Crashlytics
-  // FlutterError.onError = FirebaseCrashlytics.instance
-  // .recordFlutterFatalError;
-  // // Pass all uncaught asynchronous errors that aren't handled
-  // //by the Flutter framework to Crashlytics
-  // PlatformDispatcher.instance.onError = (error, stack) {
-  //   FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
-  //   return true;
-  // };
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+  // Pass all uncaught asynchronous errors that aren't handled
+  //by the Flutter framework to Crashlytics
+  PlatformDispatcher.instance.onError = (error, stack) {
+    FirebaseCrashlytics.instance.recordError(
+      error,
+      stack,
+      fatal: true,
+      printDetails: true,
+    );
+    return true;
+  };
 
   Bloc.observer = AppBlocObserver();
-  runApp(const HelperApp());
+  runApp(
+    const FrzbiApp(),
+    // DevicePreview(
+    //   enabled: false,
+    //   builder: (context) => const FrzbiApp(),
+    // ),
+  );
 }

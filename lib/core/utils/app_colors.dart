@@ -6,23 +6,38 @@ class AppColors {
   static MaterialColor primarySwatchColor = const MaterialColor(
     0XFFFB406C,
     <int, Color>{
-      50: Color(0XFFFB406C),
-      100: Color(0XFFFB406C),
-      200: Color(0XFFFB406C),
-      300: Color(0XFFFB406C),
-      400: Color(0XFFFB406C),
-      500: Color(0XFFFB406C),
-      600: Color(0XFFFB406C),
-      700: Color(0XFFFB406C),
-      800: Color(0XFFFB406C),
-      900: Color(0XFFFB406C),
+      50: Color(0xff004638),
+      100: Color(0xff004638),
+      200: Color(0xff004638),
+      300: Color(0xff004638),
+      400: Color(0xff004638),
+      500: Color(0xff004638),
+      600: Color(0xff004638),
+      700: Color(0xff004638),
+      800: Color(0xff004638),
+      900: Color(0xff004638),
     },
   );
-  static const Color background = Color(0XFFF9F9F9);
-  static const Color primary = Color(0XFFFB406C);
-  static const Color white = Color(0xFFFFFFFF);
-  static const Color success = Color(0XFF2EC4B6);
-  static const Color error = Color(0XFFD62828);
+  static const Color background = Color(0XFFFFFFFF);
+  static const Color primary = Color(0xff004638);
+
+  static const Color robinEggBlue = Color(0XFF99B5AF);
+  static const Color jungleGreen = Color(0XFFB8FCBF);
+  static const Color outrageousOrange = Color(0XFFFD5930);
+  static const Color amber = Color(0XFFDCED59);
+  static const Color silver = Color(0XFFCDCDCD);
+  static const Color normalGreenBackground = Color(0XFFE5EDEC);
+  static const Color greenBackground5 = Color(0XFFf2f6f5);
+  static const Color mineShaft = Color(0XFF2A2A2A);
+
+  static const Color mercury = Color(0XFFF2F2F3);
+  static const Color orangeBackground = Color(0X0DFD5930);
+  static const Color greyF = Color(0X332E2E2E);
+  static const Color philippineGray = Color(0XFF8C8C8C);
+  static const Color cardBackground4 = Color(0X0A000000);
+  static const Color money = Color(0Xff348846);
+  static const Color aquaDeep = Color(0XFF004638);
+
   static const Color darkGrey = Color(0XFFC5CAD2);
   static const Color greyChateau = Color(0xFFA8A7A7);
   static const Color text = Color(0XFF212020);
@@ -47,4 +62,9 @@ class AppColors {
   static Color lightText = const Color(0xFFF9F9F9);
   static Color darkCard = const Color(0xFF2C2B2B);
   static Color darkBackground = const Color(0xFF212020);
+
+  /// static colors for the app
+  static const Color success = Color(0XFF2EC4B6);
+  static const Color error = Color(0XFFD62828);
+  static const Color red = Color(0XFFEB5757);
 }

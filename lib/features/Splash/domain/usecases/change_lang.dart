@@ -6,7 +6,7 @@ import 'package:injectable/injectable.dart';
 
 /// a use case that changes the language of the app
 @lazySingleton
-class ChangeLangUseCase implements BaseUseCase<Failure, bool, String> {
+class ChangeLangUseCase implements BaseUseCase<bool, String> {
   /// constructor for the use case that takes a [SplashRepo] as a parameter
   ChangeLangUseCase({required this.splashRepo});
 

@@ -2,7 +2,7 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
+import 'package:helper/core/extensions/num_extensions.dart';
 
 /// this class is the image widget
 class CustomCachedImage extends StatelessWidget {

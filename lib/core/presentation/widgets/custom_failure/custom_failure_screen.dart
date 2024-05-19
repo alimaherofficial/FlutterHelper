@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:helper/core/presentation/widgets/adaptive_layout.dart';
 import 'package:helper/core/presentation/widgets/custom_failure/custom_failure_screen_mobile.dart';
 import 'package:helper/core/presentation/widgets/custom_failure/custom_failure_screen_tablet.dart';
-import 'package:helper/core/presentation/widgets/responsive.dart';
 
 /// this screen is used to show the deposit failure screen
 class CustomFailureScreen extends StatelessWidget {
@@ -30,14 +30,15 @@ class CustomFailureScreen extends StatelessWidget {
   final bool canPop;
   @override
   Widget build(BuildContext context) {
-    return Responsive(
-      mobile: CustomFailureScreenMobile(
+    return AdaptiveLayout(
+      mobileLayout: (context) => CustomFailureScreenMobile(
         errorMessage: errorMessage,
         buttonText: buttonText,
         buttonFunction: buttonFunction,
         canPop: canPop,
       ),
-      tablet: const CustomFailureScreenTablet(),
+      tabletLayout: (context) => const CustomFailureScreenTablet(),
+      webLayout: (context) => const Placeholder(),
     );
   }
 }

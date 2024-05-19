@@ -7,6 +7,7 @@ import 'package:helper/features/Splash/domain/usecases/change_theme_mode.dart';
 import 'package:helper/features/Splash/domain/usecases/get_saved_lang.dart';
 import 'package:helper/features/Splash/domain/usecases/get_saved_theme_mode.dart';
 import 'package:helper/features/Splash/presentation/cubit/main/main_cubit.dart';
+
 import 'package:provider/single_child_widget.dart';
 
 /// this class is used to manage the multi bloc provider and multi bloc listener

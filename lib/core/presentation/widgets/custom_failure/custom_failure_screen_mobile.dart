@@ -64,7 +64,7 @@ class CustomFailureScreenMobile extends StatelessWidget {
                       )
                     : null,
                 child: SvgPicture.asset(
-                  Assets.genImagesSplashLogo,
+                  Assets.genIconsSplashLogo,
                 ),
               ),
               SizedX.h6,

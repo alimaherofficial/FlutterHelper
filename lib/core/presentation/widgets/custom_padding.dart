@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
+import 'package:helper/core/extensions/num_extensions.dart';
 
 /// this class is the custom padding
 class CustomPadding extends StatelessWidget {
@@ -23,7 +23,7 @@ class CustomPadding extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: isHorizontal ? 5.w : 0.0,
+        horizontal: isHorizontal ? 24.fw : 0.0,
         vertical: isVertical ? 1.h : 0.0,
       ),
       child: child,

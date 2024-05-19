@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:firebase_analytics/firebase_analytics.dart';
 
 /// Analytics helper class to handle all analytics related operations
@@ -26,9 +24,9 @@ class AnalyticsHelper {
     String screenName, [
     String? screenClassOverride,
   ]) async {
-    await analytics.setCurrentScreen(
+    await analytics.logScreenView(
       screenName: screenName,
-      screenClassOverride: Platform.isAndroid ? 'Android' : 'iOS',
+      screenClass: screenClassOverride,
     );
   }
 

@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
+import 'package:helper/core/extensions/num_extensions.dart';
 
 /// this widget is a replacement for SizedBox
 class SizedX {
@@ -88,6 +88,12 @@ class SizedX {
     );
   }
 
+  static Widget get h9 {
+    return SizedBox(
+      height: 9.h,
+    );
+  }
+
   static Widget get h10 {
     return SizedBox(
       height: 10.h,
@@ -128,6 +134,12 @@ class SizedX {
   static Widget get w1 {
     return SizedBox(
       width: 1.w,
+    );
+  }
+
+  static Widget get w1p5 {
+    return SizedBox(
+      width: 1.5.w,
     );
   }
 

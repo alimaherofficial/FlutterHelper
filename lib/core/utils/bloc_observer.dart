@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 /// this class is the app bloc observer
@@ -6,20 +7,19 @@ class AppBlocObserver extends BlocObserver {
   @override
   void onCreate(BlocBase<dynamic> bloc) {
     super.onCreate(bloc);
-    // activeCubits.add(bloc as Cubit<dynamic>);
-    debugPrint('onCreate -- ${bloc.runtimeType}');
+    log('onCreate -- ${bloc.runtimeType}');
   }
 
   @override
   void onEvent(BlocBase<dynamic> bloc, Object? event) {
     super.onEvent(bloc as Bloc<dynamic, dynamic>, event);
-    debugPrint('onEvent -- ${bloc.runtimeType}, $event');
+    log('onEvent -- ${bloc.runtimeType}, $event');
   }
 
   @override
   void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
     super.onChange(bloc, change);
-    debugPrint('onChange -- ${bloc.runtimeType}, $change');
+    log('onChange -- ${bloc.runtimeType}, $change');
   }
 
   @override
@@ -28,21 +28,18 @@ class AppBlocObserver extends BlocObserver {
     Transition<dynamic, dynamic> transition,
   ) {
     super.onTransition(bloc, transition);
-    debugPrint('onTransition -- ${bloc.runtimeType}, $transition');
+    log('onTransition -- ${bloc.runtimeType}, $transition');
   }
 
   @override
   void onError(BlocBase<dynamic> bloc, Object error, StackTrace stackTrace) {
-    debugPrint('onError -- ${bloc.runtimeType}, $error');
+    log('onError -- ${bloc.runtimeType}, $error');
     super.onError(bloc, error, stackTrace);
   }
 
   @override
   void onClose(BlocBase<dynamic> bloc) {
     super.onClose(bloc);
-    // activeCubits.remove(bloc as Cubit<dynamic>);
-    debugPrint('onClose -- ${bloc.runtimeType}');
+    log('onClose -- ${bloc.runtimeType}');
   }
 }
-
-// List<Cubit<dynamic>> activeCubits = [];

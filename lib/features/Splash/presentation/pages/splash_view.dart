@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 /// this class is used to manage the splash view
+@RoutePage()
 class SplashView extends StatelessWidget {
   /// constructor
   const SplashView({super.key});

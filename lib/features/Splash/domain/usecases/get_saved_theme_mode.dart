@@ -6,8 +6,7 @@ import 'package:injectable/injectable.dart';
 
 /// a use case that returns the saved theme mode
 @lazySingleton
-class GetSavedThemeModeUseCase
-    implements BaseUseCase<Failure, String, NoParameters> {
+class GetSavedThemeModeUseCase implements BaseUseCase<String, NoParameters> {
   /// constructor for the use case that takes a [splashRepo]
   GetSavedThemeModeUseCase({required this.splashRepo});
 

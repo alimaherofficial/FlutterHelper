@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:helper/core/api/endpoints.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 /// this class is used to manage the dio requests
 class DioHelper {
@@ -17,7 +18,13 @@ class DioHelper {
         'Accept': 'application/json',
       },
     ),
-  );
+  )..interceptors.add(
+      PrettyDioLogger(
+        requestHeader: true,
+        requestBody: true,
+        compact: false,
+      ),
+    );
 
   /// this method is used to get data from the server
   static Future<Response<dynamic>> getData({

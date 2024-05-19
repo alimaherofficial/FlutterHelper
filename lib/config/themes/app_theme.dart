@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:helper/core/extensions/num_extensions.dart';
 import 'package:helper/core/utils/app_colors.dart';
 import 'package:helper/core/utils/app_strings.dart';
-import 'package:helper/core/utils/font_size_helper.dart';
 import 'package:helper/core/utils/styles_helper.dart';
-import 'package:sizer/sizer.dart';
 
 /// A class that provides a light theme configuration for the application.
 class AppTheme {
@@ -14,7 +13,9 @@ class AppTheme {
   ///
   /// The returned theme has its various properties configured, such as
   /// text styles, colors, etc.
-  static ThemeData theme(String lang) {
+  static ThemeData theme({
+    required String lang,
+  }) {
     return ThemeData(
       /// useMaterial3.
       useMaterial3: true,
@@ -42,8 +43,8 @@ class AppTheme {
       highlightColor: Colors.transparent,
       hoverColor: Colors.transparent,
       shadowColor: Colors.transparent,
-      secondaryHeaderColor: AppColors.white,
-      cardColor: AppColors.white,
+      secondaryHeaderColor: AppColors.background,
+      cardColor: AppColors.background,
       scaffoldBackgroundColor: AppColors.background,
 
       /// Set the button theme.
@@ -52,125 +53,72 @@ class AppTheme {
         focusColor: AppColors.primary,
       ),
 
-      // Set the brightness level.
-      brightness: Brightness.light,
-
-      // // Configure the AppBar theme.
-      // appBarTheme: const AppBarTheme(
-      //   titleTextStyle: TextStyle(
-      //     color: AppColors.text,
-      //   ),
-      //   centerTitle: false,
-      //   color: AppColors.background,
-      // ),
-
-      // Define text styles for different use-cases.
       textTheme: TextTheme(
-        /// Used for labels on upgrader components.
-        labelLarge: getBoldStyle(),
+        // /// Used for labels on upgrader components.
+        // labelLarge: getBoldStyle(),
 
         /// Used for text fields labels.
-        labelMedium: getMediumStyle(fontSize: FontSizeHelper.s10),
+        labelMedium: AppTextStyle.body(color: AppColors.text),
 
         /// Used for seen and requested texts.
-        labelSmall: getSemiBoldStyle(fontSize: FontSizeHelper.s9),
+        labelSmall: AppTextStyle.labelSmall(color: AppColors.primary),
 
         /// Used for main headers.
-        displayLarge: getSemiBoldStyle(fontSize: FontSizeHelper.s27),
+        displayLarge:
+            AppTextStyle.displayLarge(color: AppColors.outrageousOrange),
 
         /// Used for sub-headers and home information and hints.
         /// Use it also for messages but with FontWeight.w500
-        displayMedium: getRegularStyle(fontSize: FontSizeHelper.s12),
+        displayMedium:
+            AppTextStyle.buttonsContent(color: AppColors.outrageousOrange),
 
         /// Used for sub-action text.
-        displaySmall: getMediumStyle(),
+        displaySmall: AppTextStyle.displaySmall(
+          color: AppColors.silver,
+        ),
 
         /// Used for prominent titles and big circle avatar names.
         /// If you need to use it for the smaller avatar make it 17.sp
-        titleLarge: getSemiBoldStyle(fontSize: FontSizeHelper.s22),
+        titleLarge: AppTextStyle.bigBody(color: AppColors.primary),
 
         /// Used for subtitles and buttons titles.
-        titleMedium: getSemiBoldStyle(),
+        titleMedium: AppTextStyle.titleMedium(color: AppColors.primary),
 
         /// Used for less prominent titles and online status container.
-        titleSmall: getSemiBoldStyle(fontSize: FontSizeHelper.s7),
+        titleSmall: AppTextStyle.tryS(color: AppColors.text),
 
         /// Used for information text.
-        headlineLarge: getRegularStyle(),
+        headlineLarge: AppTextStyle.mediumBody(color: AppColors.text),
 
         /// Used for navigation bar titles and preferences containers.
-        headlineMedium: getMediumStyle(fontSize: FontSizeHelper.s11),
+        headlineMedium: AppTextStyle.labelSmall(color: AppColors.text),
 
         /// Used for secondary body text.
-        headlineSmall: getRegularStyle(fontSize: FontSizeHelper.s11),
+        headlineSmall: AppTextStyle.labelSmall(color: AppColors.text),
 
         /// Used for bold text.
-        bodyLarge: getBoldStyle(),
+        bodyLarge: AppTextStyle.largeBody(color: AppColors.text),
 
         /// Used for standard body text.
-        bodyMedium: getRegularStyle(fontSize: FontSizeHelper.s10),
+        bodyMedium: AppTextStyle.mediumBody(color: AppColors.philippineGray),
 
         /// Used for smaller body text.
         /// Use it also for last seen message but with FontWeight.w500
-        bodySmall: getRegularStyle(fontSize: FontSizeHelper.s9),
+        bodySmall: AppTextStyle.smallBody(color: AppColors.silver),
       ),
 
-      // dropdownMenuTheme: DropdownMenuThemeData(
-      //   inputDecorationTheme: InputDecorationTheme(
-      //     filled: true,
-      //     hintStyle: TextStyle(
-      //       fontSize: 13.sp,
-      //       fontWeight: FontWeight.w700,
-      //     ),
-      //     contentPadding: EdgeInsets.symmetric(
-      //       vertical: 1.8.h,
-      //       horizontal: 4.w,
-      //     ),
-      //     border: OutlineInputBorder(
-      //       borderRadius: BorderRadius.circular(8),
-      //     ),
-      //     enabledBorder: OutlineInputBorder(
-      //       borderRadius: BorderRadius.circular(8),
-      //       borderSide: const BorderSide(
-      //         color: AppColors.normalBorder,
-      //       ),
-      //     ),
-      //     errorBorder: const OutlineInputBorder(
-      //       borderSide: BorderSide(color: AppColors.error),
-      //       borderRadius: BorderRadius.all(Radius.circular(6)),
-      //     ),
-      //     errorStyle: getRegularStyle(
-      //       fontSize: FontSizeHelper.s10,
-      //       color: AppColors.error,
-      //     ),
-      //     focusedBorder: OutlineInputBorder(
-      //       borderRadius: BorderRadius.circular(8),
-      //       borderSide: const BorderSide(color: AppColors.normalBorder),
-      //     ),
-      //     focusedErrorBorder: const OutlineInputBorder(
-      //       borderSide: BorderSide(color: AppColors.normalBorder),
-      //       borderRadius: BorderRadius.all(
-      //         Radius.circular(6),
-      //       ),
-      //     ),
-      //     // Add any other properties that you want to customize
-      //   ),
-      // ),
+      // Set the brightness level.
+      brightness: Brightness.light,
 
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        hintStyle: TextStyle(
-          fontSize: 12.sp,
-          fontWeight: FontWeight.w400,
-          color: AppColors.text.withOpacity(0.9),
-        ),
+        hintStyle: AppTextStyle.bigBody(color: AppColors.text),
         contentPadding: EdgeInsets.symmetric(
           vertical: 1.8.h,
           horizontal: 4.w,
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          // borderSide: BorderSide.none,
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
@@ -182,10 +130,7 @@ class AppTheme {
           borderSide: BorderSide(color: AppColors.error),
           borderRadius: BorderRadius.all(Radius.circular(6)),
         ),
-        errorStyle: getRegularStyle(
-          fontSize: FontSizeHelper.s10,
-          color: AppColors.error,
-        ),
+        errorStyle: AppTextStyle.body(color: AppColors.error),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(color: AppColors.normalBorder),

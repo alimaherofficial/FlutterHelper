@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:helper/core/extensions/num_extensions.dart';
 import 'package:helper/core/utils/app_colors.dart';
 import 'package:helper/core/utils/sized_x.dart';
-import 'package:sizer/sizer.dart';
 
 /// this class is the custom text field
 class CustomTextField extends StatelessWidget {
@@ -17,7 +17,6 @@ class CustomTextField extends StatelessWidget {
     this.label,
     this.readOnly = false,
     this.useBorder = false,
-    this.borderRadius = 6,
     this.validator,
     this.onChanged,
     this.keyboardType,
@@ -30,12 +29,11 @@ class CustomTextField extends StatelessWidget {
     this.maxLength,
     this.fillColor,
     this.style,
-    this.contentPaddingHorizontal,
-    this.contentPaddingVertical,
     this.labelTextStyle,
     this.onTapOutside,
     this.autofillHints,
     this.hintStyle,
+    this.capitalizeFirstCharacter = false,
   });
   final TextEditingController controller;
   final FocusNode? focusNode;
@@ -54,19 +52,18 @@ class CustomTextField extends StatelessWidget {
   final bool? readOnly;
   final bool useBorder;
   final TextStyle? labelTextStyle;
-  final double? borderRadius;
   final int? maxLength;
   final Color? fillColor;
   final TextStyle? style;
-  final double? contentPaddingVertical;
-  final double? contentPaddingHorizontal;
   final void Function(PointerDownEvent)? onTapOutside;
   final Iterable<String>? autofillHints;
   final TextStyle? hintStyle;
+  final bool? capitalizeFirstCharacter;
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (label != null)
@@ -81,6 +78,9 @@ class CustomTextField extends StatelessWidget {
           ),
         if (label != null) SizedX.h0p5,
         TextFormField(
+          textCapitalization: capitalizeFirstCharacter!
+              ? TextCapitalization.sentences
+              : TextCapitalization.none,
           readOnly: readOnly!,
           onTapOutside: onTapOutside ??
               (_) {
@@ -105,15 +105,29 @@ class CustomTextField extends StatelessWidget {
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: hintStyle ??
-                TextStyle(
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.text.withOpacity(0.2),
-                ),
+                Theme.of(context)
+                    .textTheme
+                    .displayMedium!
+                    .copyWith(color: AppColors.aquaDeep),
             filled: true,
-            fillColor: Theme.of(context).cardColor,
+
+            fillColor: AppColors.greenBackground5,
             counterStyle: const TextStyle(
               height: double.minPositive,
+            ),
+            // none
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.sp),
+              borderSide: BorderSide.none,
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.sp),
+              borderSide: BorderSide.none,
+            ),
+
+            contentPadding: EdgeInsets.symmetric(
+              horizontal: 4.w,
+              vertical: 1.8.h,
             ),
             counterText: '',
             errorMaxLines: 4,

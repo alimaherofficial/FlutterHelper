@@ -22,7 +22,7 @@ class SplashRepoImpl implements SplashRepo {
           await splashLocalDataSource.changeLang(langCode: langCode);
       return Right(langIsChanged);
     } catch (e) {
-      return Left(ServerFailure('CacheFailure'));
+      return const Left(NormalFailure(''));
     }
   }
 
@@ -32,7 +32,7 @@ class SplashRepoImpl implements SplashRepo {
       final langCode = await splashLocalDataSource.getSavedLang();
       return Right(langCode);
     } catch (e) {
-      return Left(ServerFailure('CacheFailure'));
+      return const Left(NormalFailure('CacheFailure'));
     }
   }
 
@@ -45,7 +45,7 @@ class SplashRepoImpl implements SplashRepo {
           await splashLocalDataSource.changeThemeMode(themeMode: themeMode);
       return Right(themeModeIsChanged);
     } catch (e) {
-      return Left(ServerFailure('CacheFailure'));
+      return const Left(NormalFailure('CacheFailure'));
     }
   }
 
@@ -55,7 +55,7 @@ class SplashRepoImpl implements SplashRepo {
       final themeMode = await splashLocalDataSource.getSavedThemeMode();
       return Right(themeMode);
     } catch (e) {
-      return Left(ServerFailure('CacheFailure'));
+      return const Left(NormalFailure('CacheFailure'));
     }
   }
 }
