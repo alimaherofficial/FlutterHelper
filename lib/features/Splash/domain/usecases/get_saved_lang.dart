@@ -6,8 +6,7 @@ import 'package:injectable/injectable.dart';
 
 /// a use case that returns the saved language
 @lazySingleton
-class GetSavedLangUseCase
-    implements BaseUseCase< String, NoParameters> {
+class GetSavedLangUseCase implements BaseUseCase<String, NoParameters> {
   /// constructor for the use case that takes a [SplashRepo] as a parameter
   GetSavedLangUseCase({required this.splashRepo});
 

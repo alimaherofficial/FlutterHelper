@@ -6,7 +6,7 @@ import 'package:injectable/injectable.dart';
 
 /// a use case class that is used to change the theme mode of the app
 @lazySingleton
-class ChangeThemeModeUseCase implements BaseUseCase< bool, String> {
+class ChangeThemeModeUseCase implements BaseUseCase<bool, String> {
   /// constructor for the class that takes a [splashRepo] as a parameter
   ChangeThemeModeUseCase({required this.splashRepo});
 

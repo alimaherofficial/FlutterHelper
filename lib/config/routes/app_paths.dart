@@ -57,7 +57,6 @@ class AppPaths {
   /// package details
   static const packageDetails = 'package-details';
 
-
   /// payment
   static const payment = 'payment';
 }
