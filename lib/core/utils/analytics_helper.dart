@@ -11,7 +11,7 @@ class AnalyticsHelper {
   /// [parameters] can be null
   static Future<void> logEvent(
     String name, [
-    Map<String, dynamic>? parameters,
+    Map<String, Object>? parameters,
   ]) async {
     await analytics.logEvent(name: name, parameters: parameters);
   }
