@@ -1,4 +1,6 @@
 {
   "copiedToClipboard": "Copied to clipboard",
-  "tryAgain": "Try Again"
+  "tryAgain": "Try Again",
+  "failedToInitializeSupabaseE": "Failed to initialize Supabase: $e",
+  "couldNotFindIdTokenFromGeneratedCredential": "Could not find ID Token from generated credential."
 }

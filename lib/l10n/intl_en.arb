@@ -1,4 +1,18 @@
 {
   "copiedToClipboard": "Copied to clipboard",
-  "tryAgain": "Try Again"
+  "tryAgain": "Try Again",
+  "noInternetConnection": "No internet connection",
+  "unexpectedErrorPleaseTryAgain": "Unexpected Error, Please try again!",
+  "requestToApiserverWasCanceled": "Request to ApiServer was canceled",
+  "badCertificateWithApiserver": "Bad certificate with ApiServer",
+  "receiveTimeoutWithApiserver": "Receive timeout with ApiServer",
+  "sendTimeoutWithApiserver": "Send timeout with ApiServer",
+  "connectionTimeoutWithApiserver": "Connection timeout with ApiServer",
+  "unknownErrorWithApiserver": "Unknown error with ApiServer",
+  "internalServerErrorPleaseTryLater": "Internal Server error, Please try later",
+  "oppsThereWasAnErrorPleaseTryAgain": "Opps There was an Error, Please try again",
+  "oppsThereWasAnErrorPleaseLoginAgain": "Opps There was an Error, Please Login again",
+  "failedToSignInWithGoogle": "Failed to sign in with Google.",
+  "failedToInitializeSupabaseE": "Failed to initialize Supabase: {error}",
+  "couldNotFindIdTokenFromGeneratedCredential": "Could not find ID Token from generated credential."
 }

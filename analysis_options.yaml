@@ -16,6 +16,7 @@ analyzer:
     - 'lib/core/utils/assets.dart'
     - 'lib/core/domain/entities/screen_shots_entity/screen_shots_entity.g.dart'
     - 'lib/features/auth/domain/entities/login_entity.g.dart'
+    - 'lib/core/utils/app_settings.g.dart'
     - 'lib/firebase_options.dart'
 
 linter:

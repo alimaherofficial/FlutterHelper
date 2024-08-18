@@ -26,13 +26,13 @@ import 'package:flutter/material.dart';
 ///   This layout is used when the screen width is greater than 1200 pixels.
 ///
 /// Usage:
-/// ```
+/// dart```
 /// AdaptiveLayout(
 ///   mobileLayout: (context) => MobileLayout(),
 ///   tabletLayout: (context) => TabletLayout(),
 ///   webLayout: (context) => WebLayout(),
 /// )
-/// ```
+///  ```dart
 ///
 /// This approach ensures that the correct layout is
 /// used for the device's screen size, and it

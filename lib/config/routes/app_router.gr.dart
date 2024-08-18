@@ -13,38 +13,6 @@ import 'package:helper/config/routes/app_router.dart' as _i1;
 import 'package:helper/features/Splash/presentation/pages/splash_view.dart'
     as _i2;
 
-abstract class $AppRouter extends _i3.RootStackRouter {
-  $AppRouter({super.navigatorKey});
-
-  @override
-  final Map<String, _i3.PageFactory> pagesMap = {
-    AccountTab.name: (routeData) {
-      return _i3.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i1.AccountTabScreen(),
-      );
-    },
-    HomeTab.name: (routeData) {
-      return _i3.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i1.HomeTabScreen(),
-      );
-    },
-    MyTripsTab.name: (routeData) {
-      return _i3.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i1.MyTripsTabScreen(),
-      );
-    },
-    SplashView.name: (routeData) {
-      return _i3.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i2.SplashView(),
-      );
-    },
-  };
-}
-
 /// generated route for
 /// [_i1.AccountTabScreen]
 class AccountTab extends _i3.PageRouteInfo<void> {
@@ -56,7 +24,12 @@ class AccountTab extends _i3.PageRouteInfo<void> {
 
   static const String name = 'AccountTab';
 
-  static const _i3.PageInfo<void> page = _i3.PageInfo<void>(name);
+  static _i3.PageInfo page = _i3.PageInfo(
+    name,
+    builder: (data) {
+      return const _i1.AccountTabScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -70,7 +43,12 @@ class HomeTab extends _i3.PageRouteInfo<void> {
 
   static const String name = 'HomeTab';
 
-  static const _i3.PageInfo<void> page = _i3.PageInfo<void>(name);
+  static _i3.PageInfo page = _i3.PageInfo(
+    name,
+    builder: (data) {
+      return const _i1.HomeTabScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -84,7 +62,12 @@ class MyTripsTab extends _i3.PageRouteInfo<void> {
 
   static const String name = 'MyTripsTab';
 
-  static const _i3.PageInfo<void> page = _i3.PageInfo<void>(name);
+  static _i3.PageInfo page = _i3.PageInfo(
+    name,
+    builder: (data) {
+      return const _i1.MyTripsTabScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -98,5 +81,10 @@ class SplashView extends _i3.PageRouteInfo<void> {
 
   static const String name = 'SplashView';
 
-  static const _i3.PageInfo<void> page = _i3.PageInfo<void>(name);
+  static _i3.PageInfo page = _i3.PageInfo(
+    name,
+    builder: (data) {
+      return const _i2.SplashView();
+    },
+  );
 }

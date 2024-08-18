@@ -1,20 +1,22 @@
+import 'package:flutter/material.dart';
 import 'package:helper/core/injection_container.dart';
+import 'package:helper/core/utils/app_settings.dart';
 import 'package:helper/core/utils/database_manager.dart';
 import 'package:injectable/injectable.dart';
 
 /// this class is responsible for saving and getting the language code
 abstract interface class SplashLocalDataSource {
   /// saves the language code in the database
-  Future<bool> changeLang({required String langCode});
+  Future<bool> changeLang({required Language langCode});
 
   /// get the saved language code
-  Future<String> getSavedLang();
+  Future<Language> getSavedLang();
 
   /// saves the theme mode in the local storage
-  Future<bool> changeThemeMode({required String themeMode});
+  Future<bool> changeThemeMode({required ThemeMode themeMode});
 
   /// gets the saved theme mode from the local storage
-  Future<String> getSavedThemeMode();
+  Future<ThemeMode> getSavedThemeMode();
 }
 
 /// this class is responsible for saving and getting the language code
@@ -25,9 +27,9 @@ class SplashLocalDataSourceImpl implements SplashLocalDataSource {
   SplashLocalDataSourceImpl();
 
   @override
-  Future<bool> changeLang({required String langCode}) async {
+  Future<bool> changeLang({required Language langCode}) async {
     try {
-      getIt<DatabaseManager>().setLanguage(langCode);
+      await getIt<DatabaseManager>().setLanguage(langCode);
       return true;
     } catch (e) {
       return false;
@@ -35,15 +37,14 @@ class SplashLocalDataSourceImpl implements SplashLocalDataSource {
   }
 
   @override
-  Future<String> getSavedLang() async {
-    return getIt<DatabaseManager>()
-        .getLanguage(); // Access the static method using the class name
+  Future<Language> getSavedLang() async {
+    return getIt<DatabaseManager>().getLanguage();
   }
 
   @override
-  Future<bool> changeThemeMode({required String themeMode}) async {
+  Future<bool> changeThemeMode({required ThemeMode themeMode}) async {
     try {
-      getIt<DatabaseManager>().setThemeMode(themeMode);
+      await getIt<DatabaseManager>().setThemeMode(themeMode);
       return true;
     } catch (e) {
       return false;
@@ -51,8 +52,8 @@ class SplashLocalDataSourceImpl implements SplashLocalDataSource {
   }
 
   @override
-  Future<String> getSavedThemeMode() async {
-    return getIt<DatabaseManager>()
-        .getThemeMode(); // Access the static method using the class name
+  Future<ThemeMode> getSavedThemeMode() async {
+    final result = await getIt<DatabaseManager>().getThemeMode();
+    return result;
   }
 }

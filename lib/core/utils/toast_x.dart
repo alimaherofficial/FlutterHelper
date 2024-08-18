@@ -14,7 +14,7 @@ class ToastX {
     required String message,
     required BuildContext? context,
   }) {
-    final currentContext = navigatorKey.currentContext;
+    final currentContext = appRouter.navigatorKey.currentContext;
     if (_toastTimer == null || !_toastTimer!.isActive) {
       _overlayEntry = _createOverlayEntry(context ?? currentContext!, message);
       Overlay.of(context ?? currentContext!).insert(_overlayEntry!);

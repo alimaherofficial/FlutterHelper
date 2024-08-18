@@ -9,10 +9,10 @@ import 'package:helper/core/utils/custom_concentric_clipper.dart';
 )
 
 /// AppRouter
-class AppRouter extends $AppRouter {
+class AppRouter extends RootStackRouter {
   @override
   final List<AutoRoute> routes = [
-    CustomRoute(
+    CustomRoute<dynamic>(
       page: SplashView.page,
       path: AppPaths.splash,
       transitionsBuilder: TransitionsBuilders.fadeIn,

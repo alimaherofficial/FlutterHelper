@@ -1,18 +1,11 @@
-// ignore_for_file: public_member_api_docs
-
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:helper/core/utils/app_strings.dart';
-import 'package:hive_flutter/adapters.dart';
+import 'package:helper/core/utils/app_settings.dart';
+import 'package:helper/main.dart';
 import 'package:injectable/injectable.dart';
-
-enum DataBoxes {
-  auth,
-  settings,
-  lastAnnouncementID,
-  screenshots,
-}
+import 'package:isar/isar.dart';
+import 'package:path_provider/path_provider.dart';
 
 /// this class is used to manage the local database
 @lazySingleton
@@ -20,77 +13,80 @@ class DatabaseManager {
   /// Documents directory for saving our database
   static Directory? documentsDirectory;
 
-  /// Initialize [Hive]
-  static Future<dynamic> initHive() async {
-    await Hive.initFlutter();
-    await Future.wait([
-      Hive.openBox<dynamic>(DataBoxes.settings.name),
-      Hive.openBox<dynamic>(DataBoxes.lastAnnouncementID.name),
-      initScreenShotsEntityAdapter(),
-      initAuthEntityAdapter(),
-    ]);
+  /// Initialize [Isar] database
+  static Future<Isar> initIsar() async {
+    final dir = await getApplicationDocumentsDirectory();
+    final isar = await Isar.open(
+      // inspector: false,
+      [
+        AppSettingsSchema,
+      ],
+      directory: dir.path,
+    );
+    final result = await isar.appSettings.get(1);
+    if (result == null) {
+      await isar.writeTxn(
+        () async {
+          await isar.appSettings.put(AppSettings());
+        },
+      );
+    }
+
+    return isar;
   }
 
   /// set the preferred language code in the database
-  void setLanguage(String languageCode) {
-    Hive.box<dynamic>(DataBoxes.settings.name).put('language', languageCode);
+  Future<void> setLanguage(Language language) async {
+    await isar.writeTxn(
+      () async {
+        await isar.appSettings.put(AppSettings(language: language));
+      },
+    );
+    return;
   }
 
   /// get the preferred language code from the database
-  Future<String> getLanguage() async {
-    final box = Hive.box<dynamic>(DataBoxes.settings.name);
-    final langCode = box.get('language');
-    return Future.value(
-      (langCode as String?) == null ? AppStrings.englishCode : langCode,
-    );
+  Future<Language> getLanguage() async {
+    final appSettings = await isar.appSettings.get(1);
+    final lang = appSettings!.language;
+    return Future.value(lang);
   }
 
   /// set the preferred theme mode in the database
-  void setThemeMode(String themeMode) {
-    Hive.box<dynamic>(DataBoxes.settings.name).put('themeMode', themeMode);
+  Future<void> setThemeMode(ThemeMode themeMode) async {
+    await isar.writeTxn(
+      () async {
+        await isar.appSettings.put(AppSettings(themeMode: themeMode));
+      },
+    );
+    return;
   }
 
   /// get the preferred theme mode from the database
-  Future<String> getThemeMode() async {
-    final box = Hive.box<dynamic>(DataBoxes.settings.name);
-    final themeMode = box.get('themeMode');
-    return Future.value(
-      (themeMode as String?) == null ? ThemeMode.system.name : themeMode,
-    );
+  Future<ThemeMode> getThemeMode() async {
+    final appSettings = await isar.appSettings.get(1);
+    final themeMode = appSettings!.themeMode;
+    return Future.value(themeMode);
   }
 
   /// set that the user has seen the onboarding screen
-  void get setOnBoarding {
-    Hive.box<dynamic>(DataBoxes.settings.name).put('onboardingShowed', true);
+  Future<void> get setOnBoarding async {
+    await isar.writeTxn(
+      () async {
+        await isar.appSettings.put(AppSettings(passOnboarding: true));
+      },
+    );
   }
 
   /// get that the user has seen the onBoarding screen
   Future<bool> get getOnBoarding async {
-    final box = Hive.box<dynamic>(DataBoxes.settings.name);
-    final isOnBoarding = (box.get('onboardingShowed') ?? false) as bool;
-    return Future.value(isOnBoarding);
+    return Future.value(true);
   }
 
   /// this method is used for debugging only
   /// it will clear all the data in the database
   static Future<void> clearData() async {
-    await Hive.box<dynamic>(DataBoxes.settings.name).clear();
-    await Hive.box<dynamic>(DataBoxes.settings.name)
-        .put('onboardingShowed', true);
-    await Hive.box<dynamic>(DataBoxes.lastAnnouncementID.name).clear();
-    // await Hive.box<ScreenShotsEntity>(DataBoxes.screenshots.name).clear();
-    // await Hive.box<LoginEntity>(DataBoxes.auth.name).clear();
-  }
-
-  /// register ScreenShotsEntityAdapter and open the box
-  static Future<void> initScreenShotsEntityAdapter() async {
-    // Hive.registerAdapter(ScreenShotsEntityAdapter());
-    // await Hive.openBox<ScreenShotsEntity>(DataBoxes.screenshots.name);
-  }
-
-  /// register ScreenShotsEntityAdapter and open the box
-  static Future<void> initAuthEntityAdapter() async {
-    // Hive.registerAdapter(LoginEntityAdapter());
-    // await Hive.openBox<LoginEntity>(DataBoxes.auth.name);
+    await isar.appSettings.clear();
+    return;
   }
 }

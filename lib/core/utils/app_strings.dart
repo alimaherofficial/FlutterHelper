@@ -1,11 +1,14 @@
-// ignore_for_file: public_member_api_docs
-
 /// All the strings used in the app are defined here.
 class AppStrings {
-  static const String appName = 'Frzbi';
+  /// App Name
+  static const String appName = 'Flutter Helper';
+
+  /// English Font Family
   static const String englishFontFamily = 'Montserrat';
+
+  /// Arabic Font Family
   static const String arabicFontFamily = 'Montserrat';
+
+  /// English Language Code
   static const String unexpectedError = 'Unexpected Error, Please try again!';
-  static const String englishCode = 'en';
-  static const String arabicCode = 'ar';
 }

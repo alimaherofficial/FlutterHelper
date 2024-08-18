@@ -69,6 +69,146 @@ class S {
       args: [],
     );
   }
+
+  /// `No internet connection`
+  String get noInternetConnection {
+    return Intl.message(
+      'No internet connection',
+      name: 'noInternetConnection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unexpected Error, Please try again!`
+  String get unexpectedErrorPleaseTryAgain {
+    return Intl.message(
+      'Unexpected Error, Please try again!',
+      name: 'unexpectedErrorPleaseTryAgain',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request to ApiServer was canceled`
+  String get requestToApiserverWasCanceled {
+    return Intl.message(
+      'Request to ApiServer was canceled',
+      name: 'requestToApiserverWasCanceled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bad certificate with ApiServer`
+  String get badCertificateWithApiserver {
+    return Intl.message(
+      'Bad certificate with ApiServer',
+      name: 'badCertificateWithApiserver',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Receive timeout with ApiServer`
+  String get receiveTimeoutWithApiserver {
+    return Intl.message(
+      'Receive timeout with ApiServer',
+      name: 'receiveTimeoutWithApiserver',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send timeout with ApiServer`
+  String get sendTimeoutWithApiserver {
+    return Intl.message(
+      'Send timeout with ApiServer',
+      name: 'sendTimeoutWithApiserver',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connection timeout with ApiServer`
+  String get connectionTimeoutWithApiserver {
+    return Intl.message(
+      'Connection timeout with ApiServer',
+      name: 'connectionTimeoutWithApiserver',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unknown error with ApiServer`
+  String get unknownErrorWithApiserver {
+    return Intl.message(
+      'Unknown error with ApiServer',
+      name: 'unknownErrorWithApiserver',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Internal Server error, Please try later`
+  String get internalServerErrorPleaseTryLater {
+    return Intl.message(
+      'Internal Server error, Please try later',
+      name: 'internalServerErrorPleaseTryLater',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Opps There was an Error, Please try again`
+  String get oppsThereWasAnErrorPleaseTryAgain {
+    return Intl.message(
+      'Opps There was an Error, Please try again',
+      name: 'oppsThereWasAnErrorPleaseTryAgain',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Opps There was an Error, Please Login again`
+  String get oppsThereWasAnErrorPleaseLoginAgain {
+    return Intl.message(
+      'Opps There was an Error, Please Login again',
+      name: 'oppsThereWasAnErrorPleaseLoginAgain',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to sign in with Google.`
+  String get failedToSignInWithGoogle {
+    return Intl.message(
+      'Failed to sign in with Google.',
+      name: 'failedToSignInWithGoogle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to initialize Supabase: {error}`
+  String failedToInitializeSupabaseE(Object error) {
+    return Intl.message(
+      'Failed to initialize Supabase: $error',
+      name: 'failedToInitializeSupabaseE',
+      desc: '',
+      args: [error],
+    );
+  }
+
+  /// `Could not find ID Token from generated credential.`
+  String get couldNotFindIdTokenFromGeneratedCredential {
+    return Intl.message(
+      'Could not find ID Token from generated credential.',
+      name: 'couldNotFindIdTokenFromGeneratedCredential',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -20,10 +20,16 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ar';
 
+  static String m0(error) => "Failed to initialize Supabase: \$e";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "copiedToClipboard":
             MessageLookupByLibrary.simpleMessage("Copied to clipboard"),
+        "couldNotFindIdTokenFromGeneratedCredential":
+            MessageLookupByLibrary.simpleMessage(
+                "Could not find ID Token from generated credential."),
+        "failedToInitializeSupabaseE": m0,
         "tryAgain": MessageLookupByLibrary.simpleMessage("Try Again")
       };
 }

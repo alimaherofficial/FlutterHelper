@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:helper/core/base_usecase.dart';
-import 'package:helper/core/utils/app_strings.dart';
+import 'package:helper/core/utils/app_settings.dart';
 import 'package:helper/core/utils/theme_helper.dart';
 import 'package:helper/features/Splash/domain/usecases/change_lang.dart';
 import 'package:helper/features/Splash/domain/usecases/change_theme_mode.dart';
@@ -37,26 +37,26 @@ class MainCubit extends Cubit<MainState> {
   final ChangeLangUseCase _changeLangUseCase;
 
   /// the current language code
-  String currentLangCode = AppStrings.englishCode;
+  Language currentLangCode = Language.en;
 
   final GetSavedThemeModeUseCase _getSavedThemeModeUseCase;
   final ChangeThemeModeUseCase _changeThemeModeUseCase;
 
   /// the current theme mode
-  ThemeMode currentThemeMode = ThemeMode.system;
+  ThemeMode currentThemeMode = ThemeMode.dark;
 
   /// changes the theme mode
   Future<void> changeTheme({
-    required String themeMode,
+    required ThemeMode themeMode,
     required BuildContext context,
   }) async {
     final response = await _changeThemeModeUseCase.call(themeMode);
     response.fold(
       (failure) => currentThemeMode = ThemeMode.system,
       (value) {
-        if (themeMode == ThemeMode.dark.name) {
+        if (themeMode == ThemeMode.dark) {
           currentThemeMode = ThemeMode.dark;
-        } else if (themeMode == ThemeMode.light.name) {
+        } else if (themeMode == ThemeMode.light) {
           currentThemeMode = ThemeMode.light;
         }
         ThemeHelper.changeSystemUiOverlayStyle(context);
@@ -72,9 +72,9 @@ class MainCubit extends Cubit<MainState> {
     response.fold(
       (failure) => currentThemeMode = ThemeMode.system,
       (value) {
-        if (value == ThemeMode.dark.name) {
+        if (value == ThemeMode.dark) {
           currentThemeMode = ThemeMode.dark;
-        } else if (value == ThemeMode.light.name) {
+        } else if (value == ThemeMode.light) {
           currentThemeMode = ThemeMode.light;
         }
         emit(MainGetThemeModeState());
@@ -86,7 +86,7 @@ class MainCubit extends Cubit<MainState> {
   Future<void> getSavedLang() async {
     final response = await _getSavedLangUseCase.call(NoParameters());
     response.fold(
-      (failure) => currentLangCode = AppStrings.englishCode,
+      (failure) => currentLangCode = Language.en,
       (value) {
         currentLangCode = value;
         emit(MainGetLocaleState());
@@ -95,7 +95,7 @@ class MainCubit extends Cubit<MainState> {
   }
 
   /// changes the language
-  Future<void> changeLang({required String languageValue}) async {
+  Future<void> changeLang({required Language languageValue}) async {
     final response = await _changeLangUseCase.call(languageValue);
     response.fold(
       (failure) {
@@ -103,7 +103,7 @@ class MainCubit extends Cubit<MainState> {
       },
       (value) {
         currentLangCode = languageValue;
-        S.load(Locale(languageValue));
+        S.load(Locale(languageValue.name));
         emit(MainChangeLocaleState());
       },
     );

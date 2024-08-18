@@ -14,9 +14,9 @@ import 'package:helper/generated/l10n.dart';
 import 'package:helper/main.dart';
 
 /// Main App Widget
-class FrzbiApp extends StatelessWidget {
+class FlutterHelper extends StatelessWidget {
   /// Constructor
-  const FrzbiApp({super.key});
+  const FlutterHelper({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,13 +32,13 @@ class FrzbiApp extends StatelessWidget {
                 return NoGlowScroll(
                   child: MaterialApp.router(
                     title: AppStrings.appName,
-                    locale: Locale(MainCubit.get(context).currentLangCode),
+                    locale: Locale(MainCubit.get(context).currentLangCode.name),
                     debugShowCheckedModeBanner: AppValues.isTest,
                     theme: AppTheme.theme(
-                      lang: MainCubit.get(context).currentLangCode,
+                      lang: MainCubit.get(context).currentLangCode.name,
                     ),
                     darkTheme: AppThemeDark.theme(
-                      lang: MainCubit.get(context).currentLangCode,
+                      lang: MainCubit.get(context).currentLangCode.name,
                     ),
                     themeMode: MainCubit.get(context).currentThemeMode,
                     supportedLocales: S.delegate.supportedLocales,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:helper/core/extensions/num_extensions.dart';
 import 'package:helper/core/utils/app_colors.dart';
+import 'package:helper/core/utils/app_settings.dart';
 import 'package:helper/core/utils/app_strings.dart';
 import 'package:helper/core/utils/styles_helper.dart';
 
@@ -23,9 +24,9 @@ class AppThemeDark {
       primarySwatch: AppColors.primarySwatchColor,
 
       // Select the font family based on the language setting.
-      fontFamily: lang == AppStrings.arabicCode
-          ? AppStrings.arabicFontFamily
-          : AppStrings.englishFontFamily,
+      fontFamily: lang == Language.en.name
+          ? AppStrings.englishFontFamily
+          : AppStrings.arabicFontFamily,
 
       textSelectionTheme: TextSelectionThemeData(
         selectionColor: AppColors.disabledPrimary,

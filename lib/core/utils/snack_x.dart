@@ -10,7 +10,7 @@ class SnackX {
     required String message,
     required BuildContext? context,
   }) {
-    final currentContext = context ?? navigatorKey.currentContext;
+    final currentContext = context ?? appRouter.navigatorKey.currentContext;
     if (currentContext != null) {
       ScaffoldMessenger.of(currentContext).showSnackBar(
         SnackBar(
