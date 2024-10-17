@@ -14,10 +14,10 @@ class ToastX {
     required String message,
     required BuildContext? context,
   }) {
-    final currentContext = appRouter.navigatorKey.currentContext;
+    final currentContext = context ?? appRouter.navigatorKey.currentContext;
     if (_toastTimer == null || !_toastTimer!.isActive) {
-      _overlayEntry = _createOverlayEntry(context ?? currentContext!, message);
-      Overlay.of(context ?? currentContext!).insert(_overlayEntry!);
+      _overlayEntry = _createOverlayEntry(currentContext!, message);
+      Overlay.of(currentContext).insert(_overlayEntry!);
       _toastTimer = Timer(const Duration(milliseconds: 3500), () {
         if (_overlayEntry != null) {
           _overlayEntry!.remove();
