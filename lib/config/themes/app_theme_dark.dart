@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:helper/core/extensions/num_extensions.dart';
 import 'package:helper/core/utils/app_colors.dart';
-import 'package:helper/core/utils/app_settings.dart';
+import 'package:helper/core/utils/database.dart';
 import 'package:helper/core/utils/app_strings.dart';
 import 'package:helper/core/utils/styles_helper.dart';
 
@@ -14,9 +14,7 @@ class AppThemeDark {
   ///
   /// The returned theme has its various properties configured, such as
   /// text styles, colors, etc.
-  static ThemeData theme({
-    required String lang,
-  }) {
+  static ThemeData theme({required String lang}) {
     return ThemeData(
       /// useMaterial3.
       useMaterial3: true,
@@ -37,8 +35,9 @@ class AppThemeDark {
       // Various color configurations.
       // Adjust colors for dark theme
       primaryColor: AppColors.primary, // Define darkPrimary in AppColors
-      hintColor:
-          AppColors.darkGrey.withOpacity(0.8), // More opacity for dark mode
+      hintColor: AppColors.darkGrey.withOpacity(
+        0.8,
+      ), // More opacity for dark mode
       disabledColor:
           AppColors.disabledPrimary, // Define disabledDark in AppColors
       dividerColor: AppColors.lightText, // Light text color for dividers
@@ -51,7 +50,6 @@ class AppThemeDark {
       cardColor: AppColors.darkCard, // Define darkCard in AppColors
       scaffoldBackgroundColor:
           AppColors.darkBackground, // Define darkBackground in AppColors
-
       // Set the brightness level.
       brightness: Brightness.dark,
 
@@ -65,26 +63,17 @@ class AppThemeDark {
       // ),
 
       // Define text styles for different use-cases.
-
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        hintStyle: TextStyle(
-          fontSize: 13.sp,
-          fontWeight: FontWeight.w700,
-        ),
-        contentPadding: EdgeInsets.symmetric(
-          vertical: 1.8.h,
-          horizontal: 4.w,
-        ),
+        hintStyle: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w700),
+        contentPadding: EdgeInsets.symmetric(vertical: 1.8.h, horizontal: 4.w),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           // borderSide: BorderSide.none,
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(
-            color: AppColors.darkBorder,
-          ),
+          borderSide: const BorderSide(color: AppColors.darkBorder),
         ),
         errorBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.error),
@@ -97,9 +86,7 @@ class AppThemeDark {
         ),
         focusedErrorBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.darkBorder),
-          borderRadius: BorderRadius.all(
-            Radius.circular(6),
-          ),
+          borderRadius: BorderRadius.all(Radius.circular(6)),
         ),
       ),
     );

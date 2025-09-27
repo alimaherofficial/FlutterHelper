@@ -123,9 +123,9 @@ extension CustomButtonX on CustomButton {
       height: height ?? 41.fh,
       borderRadius: borderRadius,
       textStyle: textStyle ??
-          Theme.of(context).textTheme.titleLarge?.copyWith(
-                color: AppColors.aquaDeep,
-              ),
+          Theme.of(
+            context,
+          ).textTheme.titleLarge?.copyWith(color: AppColors.aquaDeep),
     );
   }
 }

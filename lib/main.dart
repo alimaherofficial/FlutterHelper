@@ -6,21 +6,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:helper/app.dart';
 import 'package:helper/config/routes/app_router.dart';
+import 'package:helper/app.dart';
 import 'package:helper/core/injection_container.dart';
 import 'package:helper/core/utils/bloc_observer.dart';
 import 'package:helper/core/utils/database_manager.dart';
 import 'package:helper/core/utils/supabase_helper.dart';
 import 'package:helper/firebase_options.dart';
-import 'package:isar/isar.dart';
+import 'package:helper/core/utils/database.dart';
 import 'package:upgrader/upgrader.dart';
 
 /// The [AppRouter] instance that is used to navigate across the app.
 final appRouter = AppRouter();
 
-/// The [Isar] instance that is used to interact with the database.
-late final Isar isar;
+/// The [AppDatabase] instance that is used to interact with the database.
+late final AppDatabase database;
 
 /// A global key that will uniquely identify the Navigator
 void main() async {
@@ -44,22 +44,16 @@ void main() async {
   };
 
   Bloc.observer = AppBlocObserver();
-  runApp(
-    const FlutterHelper(),
-  );
+  runApp(const FlutterHelper());
 }
 
 Future<void> _initApp() async {
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]);
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await dotenv.load();
-  isar = await DatabaseManager.initIsar();
+  database = await DatabaseManager.initDatabase();
   await Future.wait<dynamic>([
     configureDependencies(),
-    Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    ),
+    Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform),
     Upgrader.sharedInstance.initialize(),
   ]);
 

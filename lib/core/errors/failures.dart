@@ -3,7 +3,6 @@
 import 'package:dio/dio.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:helper/generated/l10n.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 class Failure implements Exception {
   Failure(this.errMessage, this.errType);
@@ -20,8 +19,8 @@ class Failure implements Exception {
     switch (e.runtimeType) {
       case FirebaseException:
         return FirebaseFailure.fromFirebaseException(e as FirebaseException);
-      case (PostgrestException || AuthException || AuthApiException):
-        return SupabaseFailure.fromSupabaseError(e);
+      // case (PostgrestException || AuthException || AuthApiException):
+      //   return SupabaseFailure.fromSupabaseError(e);
       case DioException:
         return DioFailure.fromDioError(e as DioException);
       default:
@@ -39,56 +38,48 @@ class Failure implements Exception {
   }
 }
 
-class SupabaseFailure extends Failure {
-  SupabaseFailure(String errMessage) : super(errMessage, 'Supabase Exception');
+// class SupabaseFailure extends Failure {
+//   SupabaseFailure(String errMessage) : super(errMessage, 'Supabase Exception');
 
-  factory SupabaseFailure.fromSupabaseError(Exception e) {
-    switch (e.runtimeType) {
-      case PostgrestException:
-        return SupabaseFailure.fromSupabasePostgrestException(
-          e as PostgrestException,
-        );
-      case AuthException:
-        return SupabaseFailure.fromAuthException(e as AuthException);
+//   factory SupabaseFailure.fromSupabaseError(Exception e) {
+//     switch (e.runtimeType) {
+//       case PostgrestException:
+//         return SupabaseFailure.fromSupabasePostgrestException(
+//           e as PostgrestException,
+//         );
+//       case AuthException:
+//         return SupabaseFailure.fromAuthException(e as AuthException);
 
-      case AuthApiException:
-        return SupabaseFailure.fromAuthApiException(e as AuthApiException);
-      default:
-        return SupabaseFailure(e.toString());
-    }
-  }
+//       case AuthApiException:
+//         return SupabaseFailure.fromAuthApiException(e as AuthApiException);
+//       default:
+//         return SupabaseFailure(e.toString());
+//     }
+//   }
 
-  factory SupabaseFailure.fromSupabasePostgrestException(PostgrestException e) {
-    return SupabaseFailure(
-      e.message,
-    );
-  }
+//   factory SupabaseFailure.fromSupabasePostgrestException(PostgrestException e) {
+//     return SupabaseFailure(e.message);
+//   }
 
-  factory SupabaseFailure.fromAuthException(AuthException e) {
-    return SupabaseFailure(
-      e.message,
-    );
-  }
+//   factory SupabaseFailure.fromAuthException(AuthException e) {
+//     return SupabaseFailure(e.message);
+//   }
 
-  factory SupabaseFailure.fromAuthApiException(AuthApiException e) {
-    return SupabaseFailure(
-      e.message,
-    );
-  }
+//   factory SupabaseFailure.fromAuthApiException(AuthApiException e) {
+//     return SupabaseFailure(e.message);
+//   }
 
-  @override
-  String toString() {
-    return 'SupabaseFailure: $errMessage';
-  }
-}
+//   @override
+//   String toString() {
+//     return 'SupabaseFailure: $errMessage';
+//   }
+// }
 
 class FirebaseFailure extends Failure {
   FirebaseFailure(String errMessage) : super(errMessage, 'Firebase Exception');
 
   factory FirebaseFailure.fromFirebaseException(FirebaseException e) {
-    return FirebaseFailure(
-      e.message ?? 'An error occurred',
-    );
+    return FirebaseFailure(e.message ?? 'An error occurred');
   }
 
   @override
@@ -150,14 +141,10 @@ class DioFailure extends Failure {
 }
 
 class RegularFailure extends Failure {
-  RegularFailure(
-    String errMessage,
-  ) : super(errMessage, 'Regular Exception');
+  RegularFailure(String errMessage) : super(errMessage, 'Regular Exception');
 
   factory RegularFailure.fromException(Exception e) {
-    return RegularFailure(
-      e.toString(),
-    );
+    return RegularFailure(e.toString());
   }
 
   @override

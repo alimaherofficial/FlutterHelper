@@ -12,10 +12,7 @@ Future<E?> showOptionsDialog<E extends Object>({
     context: context,
     useSafeArea: false,
     builder: (context) {
-      return OptionsDialog<E>(
-        title: title,
-        options: options,
-      );
+      return OptionsDialog<E>(title: title, options: options);
     },
   );
 }

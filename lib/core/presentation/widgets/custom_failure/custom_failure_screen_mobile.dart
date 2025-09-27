@@ -63,9 +63,7 @@ class CustomFailureScreenMobile extends StatelessWidget {
                         color: Colors.white,
                       )
                     : null,
-                child: SvgPicture.asset(
-                  Assets.genIconsSplashLogo,
-                ),
+                child: SvgPicture.asset(Assets.genIconsSplashLogo),
               ),
               SizedX.h6,
               CustomButton(

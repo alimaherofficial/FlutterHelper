@@ -17,17 +17,11 @@ class Loading {
   LoadingScreenController? controller;
 
   /// show
-  void show({
-    required BuildContext context,
-    String? text,
-  }) {
+  void show({required BuildContext context, String? text}) {
     if (controller?.update(text) ?? false) {
       return;
     } else {
-      controller = showOverlay(
-        context: context,
-        text: text,
-      );
+      controller = showOverlay(context: context, text: text);
     }
   }
 
@@ -76,9 +70,7 @@ class Loading {
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyMedium
-                                ?.copyWith(
-                                  color: Colors.white,
-                                ),
+                                ?.copyWith(color: Colors.white),
                           );
                         } else {
                           return Container();
@@ -121,10 +113,7 @@ typedef UpdateLoadingScreen = bool Function(String? text);
 @immutable
 class LoadingScreenController {
   /// LoadingScreenController
-  const LoadingScreenController({
-    required this.close,
-    required this.update,
-  });
+  const LoadingScreenController({required this.close, required this.update});
 
   /// close loading screen
   final CloseLoadingScreen close;

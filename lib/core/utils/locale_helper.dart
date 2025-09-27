@@ -1,4 +1,4 @@
-import 'package:helper/core/utils/app_settings.dart';
+import 'package:helper/core/utils/database.dart';
 import 'package:intl/intl.dart';
 
 /// this class is used to manage the locale

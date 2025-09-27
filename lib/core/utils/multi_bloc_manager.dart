@@ -2,11 +2,11 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:helper/core/injection_container.dart';
-import 'package:helper/features/Splash/domain/usecases/change_lang.dart';
-import 'package:helper/features/Splash/domain/usecases/change_theme_mode.dart';
-import 'package:helper/features/Splash/domain/usecases/get_saved_lang.dart';
-import 'package:helper/features/Splash/domain/usecases/get_saved_theme_mode.dart';
-import 'package:helper/features/Splash/presentation/cubit/main/main_cubit.dart';
+import 'package:helper/features/splash/domain/usecases/change_lang.dart';
+import 'package:helper/features/splash/domain/usecases/change_theme_mode.dart';
+import 'package:helper/features/splash/domain/usecases/get_saved_lang.dart';
+import 'package:helper/features/splash/domain/usecases/get_saved_theme_mode.dart';
+import 'package:helper/features/splash/presentation/cubit/main/main_cubit.dart';
 
 import 'package:provider/single_child_widget.dart';
 
@@ -30,9 +30,7 @@ class MultiBlocManager {
   static List<SingleChildWidget> get multiBlocListenersList {
     return [
       // main cubit listener
-      BlocListener<MainCubit, MainState>(
-        listener: (context, state) {},
-      ),
+      BlocListener<MainCubit, MainState>(listener: (context, state) {}),
     ];
   }
 }

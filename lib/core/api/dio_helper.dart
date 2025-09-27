@@ -34,10 +34,7 @@ class DioHelper {
     Map<String, dynamic>? headers,
     void Function(int, int)? onReceiveProgress,
   }) {
-    dio.options.headers = headers ??
-        {
-          'Authorization': 'Bearer $token',
-        };
+    dio.options.headers = headers ?? {'Authorization': 'Bearer $token'};
     return dio.get(
       url,
       queryParameters: queryParameters,
@@ -50,12 +47,8 @@ class DioHelper {
     required String url,
     String? token,
   }) {
-    dio.options.headers = {
-      'Authorization': 'Bearer $token',
-    };
-    return dio.delete(
-      url,
-    );
+    dio.options.headers = {'Authorization': 'Bearer $token'};
+    return dio.delete(url);
   }
 
   /// this method is used to update data on the server
@@ -65,14 +58,8 @@ class DioHelper {
     required String? token,
     Map<String, dynamic>? queryParameters,
   }) async {
-    dio.options.headers = {
-      'Authorization': 'Bearer $token',
-    };
-    return dio.put(
-      url!,
-      data: data,
-      queryParameters: queryParameters,
-    );
+    dio.options.headers = {'Authorization': 'Bearer $token'};
+    return dio.put(url!, data: data, queryParameters: queryParameters);
   }
 
   /// this method is used to post data to the server
@@ -83,9 +70,7 @@ class DioHelper {
     Options? options,
     Map<String, dynamic>? queryParameters,
   }) {
-    dio.options.headers = {
-      'Authorization': 'Bearer $token',
-    };
+    dio.options.headers = {'Authorization': 'Bearer $token'};
     return dio.post(
       url!,
       data: data,
@@ -100,10 +85,6 @@ class DioHelper {
     required String? savePath,
     void Function(int, int)? onReceiveProgress,
   }) {
-    return dio.download(
-      url!,
-      savePath,
-      onReceiveProgress: onReceiveProgress,
-    );
+    return dio.download(url!, savePath, onReceiveProgress: onReceiveProgress);
   }
 }

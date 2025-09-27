@@ -9,7 +9,7 @@ import 'package:helper/core/utils/app_strings.dart';
 import 'package:helper/core/utils/app_values.dart';
 import 'package:helper/core/utils/multi_bloc_manager.dart';
 import 'package:helper/core/utils/size_helper.dart';
-import 'package:helper/features/Splash/presentation/cubit/main/main_cubit.dart';
+import 'package:helper/features/splash/presentation/cubit/main/main_cubit.dart';
 import 'package:helper/generated/l10n.dart';
 import 'package:helper/main.dart';
 
@@ -50,9 +50,7 @@ class FlutterHelper extends StatelessWidget {
                     ],
                     routerConfig: appRouter.config(
                       navigatorObservers: () {
-                        return [
-                          AnalyticsNavigatorObserver(),
-                        ];
+                        return [AnalyticsNavigatorObserver()];
                       },
                     ),
                   ),

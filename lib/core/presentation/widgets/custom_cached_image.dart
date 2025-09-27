@@ -34,9 +34,7 @@ class CustomCachedImage extends StatelessWidget {
           errorWidget: (context, error, stackTrace) {
             return Transform.scale(
               scale: errorWidgetIconScale ?? 0.3.sp,
-              child: const Icon(
-                Icons.error,
-              ),
+              child: const Icon(Icons.error),
             );
           },
         ),

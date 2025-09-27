@@ -71,10 +71,9 @@ class CustomTextField extends StatelessWidget {
             label!,
             textAlign: TextAlign.left,
             style: labelTextStyle ??
-                Theme.of(context)
-                    .textTheme
-                    .labelMedium!
-                    .copyWith(color: Theme.of(context).dividerColor),
+                Theme.of(context).textTheme.labelMedium!.copyWith(
+                      color: Theme.of(context).dividerColor,
+                    ),
           ),
         if (label != null) SizedX.h0p5,
         TextFormField(
@@ -105,16 +104,13 @@ class CustomTextField extends StatelessWidget {
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: hintStyle ??
-                Theme.of(context)
-                    .textTheme
-                    .displayMedium!
-                    .copyWith(color: AppColors.aquaDeep),
+                Theme.of(
+                  context,
+                ).textTheme.displayMedium!.copyWith(color: AppColors.aquaDeep),
             filled: true,
 
             fillColor: AppColors.greenBackground5,
-            counterStyle: const TextStyle(
-              height: double.minPositive,
-            ),
+            counterStyle: const TextStyle(height: double.minPositive),
             // none
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.sp),

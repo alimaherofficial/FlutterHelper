@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:helper/core/extensions/num_extensions.dart';
 import 'package:helper/core/utils/app_colors.dart';
-import 'package:helper/core/utils/app_settings.dart';
+import 'package:helper/core/utils/database.dart';
 import 'package:helper/core/utils/app_strings.dart';
 import 'package:helper/core/utils/styles_helper.dart';
 
@@ -14,9 +14,7 @@ class AppTheme {
   ///
   /// The returned theme has its various properties configured, such as
   /// text styles, colors, etc.
-  static ThemeData theme({
-    required String lang,
-  }) {
+  static ThemeData theme({required String lang}) {
     return ThemeData(
       /// useMaterial3.
       useMaterial3: true,
@@ -65,18 +63,18 @@ class AppTheme {
         labelSmall: AppTextStyle.labelSmall(color: AppColors.primary),
 
         /// Used for main headers.
-        displayLarge:
-            AppTextStyle.displayLarge(color: AppColors.outrageousOrange),
+        displayLarge: AppTextStyle.displayLarge(
+          color: AppColors.outrageousOrange,
+        ),
 
         /// Used for sub-headers and home information and hints.
         /// Use it also for messages but with FontWeight.w500
-        displayMedium:
-            AppTextStyle.buttonsContent(color: AppColors.outrageousOrange),
+        displayMedium: AppTextStyle.buttonsContent(
+          color: AppColors.outrageousOrange,
+        ),
 
         /// Used for sub-action text.
-        displaySmall: AppTextStyle.displaySmall(
-          color: AppColors.silver,
-        ),
+        displaySmall: AppTextStyle.displaySmall(color: AppColors.silver),
 
         /// Used for prominent titles and big circle avatar names.
         /// If you need to use it for the smaller avatar make it 17.sp
@@ -114,18 +112,11 @@ class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         hintStyle: AppTextStyle.bigBody(color: AppColors.text),
-        contentPadding: EdgeInsets.symmetric(
-          vertical: 1.8.h,
-          horizontal: 4.w,
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
+        contentPadding: EdgeInsets.symmetric(vertical: 1.8.h, horizontal: 4.w),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(
-            color: AppColors.normalBorder,
-          ),
+          borderSide: const BorderSide(color: AppColors.normalBorder),
         ),
         errorBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.error),
@@ -138,9 +129,7 @@ class AppTheme {
         ),
         focusedErrorBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.normalBorder),
-          borderRadius: BorderRadius.all(
-            Radius.circular(6),
-          ),
+          borderRadius: BorderRadius.all(Radius.circular(6)),
         ),
       ),
     );

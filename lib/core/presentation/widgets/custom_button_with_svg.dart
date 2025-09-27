@@ -34,19 +34,13 @@ class CustomButtonWithSvg extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.only(
-          top: 10,
-          bottom: 5,
-        ),
+        padding: const EdgeInsets.only(top: 10, bottom: 5),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (isRight) svgPicture,
             if (isRight) SizedBox(width: 10.fw),
-            Text(
-              buttonText,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
+            Text(buttonText, style: Theme.of(context).textTheme.titleLarge),
             if (isLeft) SizedBox(width: 10.fw),
             if (isLeft) svgPicture,
           ],

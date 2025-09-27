@@ -4,9 +4,7 @@ import 'package:helper/config/routes/app_paths.dart';
 import 'package:helper/config/routes/app_router.gr.dart';
 import 'package:helper/core/utils/custom_concentric_clipper.dart';
 
-@AutoRouterConfig(
-  replaceInRouteName: 'Screen,Route',
-)
+@AutoRouterConfig(replaceInRouteName: 'Screen,Route')
 
 /// AppRouter
 class AppRouter extends RootStackRouter {

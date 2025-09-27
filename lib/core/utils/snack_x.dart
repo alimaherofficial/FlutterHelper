@@ -23,9 +23,9 @@ class SnackX {
                 textAlign: TextAlign.center,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: Theme.of(currentContext).textTheme.bodyMedium!.copyWith(
-                      color: AppColors.greenWhite,
-                    ),
+                style: Theme.of(
+                  currentContext,
+                ).textTheme.bodyMedium!.copyWith(color: AppColors.greenWhite),
               ),
             ),
           ),

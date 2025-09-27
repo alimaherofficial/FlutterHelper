@@ -13,9 +13,7 @@ abstract class AppTextStyle {
   /// letterSpacing: none
   /// fontStyle: none
   /// decoration: none
-  static TextStyle displaySmall({
-    required Color color,
-  }) =>
+  static TextStyle displaySmall({required Color color}) =>
       GoogleFonts.montserrat(
         fontSize: 33.getResponsiveFontSize,
         height: 1.5,
@@ -31,10 +29,7 @@ abstract class AppTextStyle {
   /// letterSpacing: none
   /// fontStyle: none
   /// decoration: none
-  static TextStyle tryS({
-    required Color color,
-  }) =>
-      GoogleFonts.montserrat(
+  static TextStyle tryS({required Color color}) => GoogleFonts.montserrat(
         fontSize: 23.getResponsiveFontSize,
         height: 1.5,
         color: color,
@@ -65,10 +60,7 @@ abstract class AppTextStyle {
   /// letterSpacing: none
   /// fontStyle: none
   /// decoration: none
-  static TextStyle bigBody({
-    required Color color,
-  }) =>
-      GoogleFonts.montserrat(
+  static TextStyle bigBody({required Color color}) => GoogleFonts.montserrat(
         fontSize: 14.getResponsiveFontSize,
         height: 1.71,
         color: color,
@@ -83,9 +75,7 @@ abstract class AppTextStyle {
   /// letterSpacing: none
   /// fontStyle: none
   /// decoration: none
-  static TextStyle buttonsContent({
-    required Color color,
-  }) =>
+  static TextStyle buttonsContent({required Color color}) =>
       GoogleFonts.montserrat(
         fontSize: 16.getResponsiveFontSize,
         height: 1.5,
@@ -101,10 +91,7 @@ abstract class AppTextStyle {
   /// letterSpacing: none
   /// fontStyle: none
   /// decoration: none
-  static TextStyle largeBody({
-    required Color color,
-  }) =>
-      GoogleFonts.montserrat(
+  static TextStyle largeBody({required Color color}) => GoogleFonts.montserrat(
         fontSize: 13.getResponsiveFontSize,
         height: 1.5,
         color: color,
@@ -119,10 +106,7 @@ abstract class AppTextStyle {
   /// letterSpacing: none
   /// fontStyle: none
   /// decoration: none
-  static TextStyle body({
-    required Color color,
-  }) =>
-      GoogleFonts.montserrat(
+  static TextStyle body({required Color color}) => GoogleFonts.montserrat(
         fontSize: 12.getResponsiveFontSize,
         height: 1.67,
         color: color,
@@ -137,10 +121,7 @@ abstract class AppTextStyle {
   /// letterSpacing: none
   /// fontStyle: none
   /// decoration: none
-  static TextStyle mediumBody({
-    required Color color,
-  }) =>
-      GoogleFonts.montserrat(
+  static TextStyle mediumBody({required Color color}) => GoogleFonts.montserrat(
         fontSize: 11.getResponsiveFontSize,
         height: 1.67,
         color: color,
@@ -155,10 +136,7 @@ abstract class AppTextStyle {
   /// letterSpacing: none
   /// fontStyle: none
   /// decoration: none
-  static TextStyle smallBody({
-    required Color color,
-  }) =>
-      GoogleFonts.montserrat(
+  static TextStyle smallBody({required Color color}) => GoogleFonts.montserrat(
         fontSize: 10.getResponsiveFontSize,
         height: 1.5,
         color: color,
@@ -173,10 +151,7 @@ abstract class AppTextStyle {
   /// letterSpacing: none
   /// fontStyle: none
   /// decoration: none
-  static TextStyle labelSmall({
-    required Color color,
-  }) =>
-      GoogleFonts.montserrat(
+  static TextStyle labelSmall({required Color color}) => GoogleFonts.montserrat(
         fontSize: 11.getResponsiveFontSize,
         height: 1.5,
         color: color,
@@ -191,9 +166,7 @@ abstract class AppTextStyle {
   /// letterSpacing: none
   /// fontStyle: none
   /// decoration: none
-  static TextStyle displayLarge({
-    required Color color,
-  }) =>
+  static TextStyle displayLarge({required Color color}) =>
       GoogleFonts.montserrat(
         fontSize: 50.getResponsiveFontSize,
         height: 1.5,

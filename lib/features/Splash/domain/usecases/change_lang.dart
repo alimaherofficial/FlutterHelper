@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:helper/core/base_usecase.dart';
 import 'package:helper/core/errors/failures.dart';
-import 'package:helper/core/utils/app_settings.dart';
-import 'package:helper/features/Splash/domain/repositories/splash_repo.dart';
+import 'package:helper/core/utils/database.dart';
+import 'package:helper/features/splash/domain/repositories/splash_repo.dart';
 import 'package:injectable/injectable.dart';
 
 /// a use case that changes the language of the app

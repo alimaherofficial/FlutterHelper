@@ -60,10 +60,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ),
       ),
-      title: Text(
-        titleText,
-        style: Theme.of(context).textTheme.titleMedium,
-      ),
+      title: Text(titleText, style: Theme.of(context).textTheme.titleMedium),
       backgroundColor: Colors.transparent,
       actions: actionIcon == null
           ? null
@@ -71,11 +68,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               IconButton(
                 padding: EdgeInsets.symmetric(horizontal: 24.fw),
                 onPressed: actionOnPressed,
-                icon: Align(
-                  child: SvgPicture.asset(
-                    actionIcon!,
-                  ),
-                ),
+                icon: Align(child: SvgPicture.asset(actionIcon!)),
               ),
             ],
     );

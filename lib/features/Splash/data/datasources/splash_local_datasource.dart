@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:helper/core/injection_container.dart';
-import 'package:helper/core/utils/app_settings.dart';
+import 'package:helper/core/utils/database.dart';
 import 'package:helper/core/utils/database_manager.dart';
 import 'package:injectable/injectable.dart';
 

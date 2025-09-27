@@ -38,8 +38,12 @@ class ToastX {
           elevation: 10,
           borderRadius: BorderRadius.circular(10),
           child: Container(
-            padding:
-                const EdgeInsets.only(left: 10, right: 10, top: 13, bottom: 10),
+            padding: const EdgeInsets.only(
+              left: 10,
+              right: 10,
+              top: 13,
+              bottom: 10,
+            ),
             decoration: BoxDecoration(
               color: Theme.of(context).hintColor.withOpacity(0.6),
               borderRadius: BorderRadius.circular(10),
@@ -82,10 +86,14 @@ class _ToastAnimationState extends State<_ToastAnimation>
       vsync: this,
       duration: const Duration(milliseconds: 700),
     );
-    _fadeAnimation =
-        Tween(begin: -10.0, end: 10.0).animate(_animationController1);
-    _positionAnimation =
-        Tween(begin: 50.0, end: 100.0).animate(_animationController1);
+    _fadeAnimation = Tween(
+      begin: -10.0,
+      end: 10.0,
+    ).animate(_animationController1);
+    _positionAnimation = Tween(
+      begin: 50.0,
+      end: 100.0,
+    ).animate(_animationController1);
     _animationController2 = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 700),
@@ -95,10 +103,14 @@ class _ToastAnimationState extends State<_ToastAnimation>
       ..addListener(() {
         setState(() {});
         if (_animationController1.isCompleted) {
-          _fadeAnimation =
-              Tween(begin: 10.0, end: -10.0).animate(_animationController2);
-          _positionAnimation =
-              Tween(begin: 100.0, end: 50.0).animate(_animationController2);
+          _fadeAnimation = Tween(
+            begin: 10.0,
+            end: -10.0,
+          ).animate(_animationController2);
+          _positionAnimation = Tween(
+            begin: 100.0,
+            end: 50.0,
+          ).animate(_animationController2);
           Future.delayed(const Duration(seconds: 2), () {
             _animationController2
               ..forward()
@@ -124,10 +136,7 @@ class _ToastAnimationState extends State<_ToastAnimation>
       bottom: _positionAnimation.value,
       width: 50.w,
       left: 25.w,
-      child: FadeTransition(
-        opacity: _fadeAnimation,
-        child: widget.child,
-      ),
+      child: FadeTransition(opacity: _fadeAnimation, child: widget.child),
     );
   }
 }

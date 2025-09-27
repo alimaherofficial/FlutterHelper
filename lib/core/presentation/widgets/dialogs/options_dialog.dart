@@ -8,11 +8,7 @@ import 'package:helper/core/presentation/widgets/custom_button.dart';
 import 'package:helper/core/utils/app_colors.dart';
 
 class OptionsDialog<E> extends StatelessWidget {
-  const OptionsDialog({
-    required this.title,
-    required this.options,
-    super.key,
-  });
+  const OptionsDialog({required this.title, required this.options, super.key});
 
   final String title;
   final Map<String, E> options;
@@ -27,17 +23,12 @@ class OptionsDialog<E> extends StatelessWidget {
             sigmaY: 10,
             tileMode: TileMode.repeated,
           ),
-          child: Container(
-            color: AppColors.greenWhite.withOpacity(0.5),
-          ),
+          child: Container(color: AppColors.greenWhite.withOpacity(0.5)),
         ),
         Container(
           margin: EdgeInsets.symmetric(horizontal: 5.w),
           width: double.infinity,
-          padding: EdgeInsets.only(
-            top: 10.sp,
-            bottom: 6.sp,
-          ),
+          padding: EdgeInsets.only(top: 10.sp, bottom: 6.sp),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(20),
@@ -47,9 +38,9 @@ class OptionsDialog<E> extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: AppColors.aquaDeep,
-                    ),
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(color: AppColors.aquaDeep),
               ),
               ...options.entries.map(
                 (entry) => Column(

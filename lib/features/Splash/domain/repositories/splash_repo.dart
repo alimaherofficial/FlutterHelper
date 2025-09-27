@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:helper/core/errors/failures.dart';
-import 'package:helper/core/utils/app_settings.dart';
+import 'package:helper/core/utils/database.dart';
 
 /// abstract interface class for Splash repository
 abstract interface class SplashRepo {

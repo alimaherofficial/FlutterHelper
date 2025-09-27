@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:helper/core/base_usecase.dart';
-import 'package:helper/core/utils/app_settings.dart';
+import 'package:helper/core/utils/database.dart';
 import 'package:helper/core/utils/theme_helper.dart';
-import 'package:helper/features/Splash/domain/usecases/change_lang.dart';
-import 'package:helper/features/Splash/domain/usecases/change_theme_mode.dart';
-import 'package:helper/features/Splash/domain/usecases/get_saved_lang.dart';
-import 'package:helper/features/Splash/domain/usecases/get_saved_theme_mode.dart';
+import 'package:helper/features/splash/domain/usecases/change_lang.dart';
+import 'package:helper/features/splash/domain/usecases/change_theme_mode.dart';
+import 'package:helper/features/splash/domain/usecases/get_saved_lang.dart';
+import 'package:helper/features/splash/domain/usecases/get_saved_theme_mode.dart';
 import 'package:helper/generated/l10n.dart';
 
 part 'main_state.dart';
@@ -51,47 +51,38 @@ class MainCubit extends Cubit<MainState> {
     required BuildContext context,
   }) async {
     final response = await _changeThemeModeUseCase.call(themeMode);
-    response.fold(
-      (failure) => currentThemeMode = ThemeMode.system,
-      (value) {
-        if (themeMode == ThemeMode.dark) {
-          currentThemeMode = ThemeMode.dark;
-        } else if (themeMode == ThemeMode.light) {
-          currentThemeMode = ThemeMode.light;
-        }
-        ThemeHelper.changeSystemUiOverlayStyle(context);
+    response.fold((failure) => currentThemeMode = ThemeMode.system, (value) {
+      if (themeMode == ThemeMode.dark) {
+        currentThemeMode = ThemeMode.dark;
+      } else if (themeMode == ThemeMode.light) {
+        currentThemeMode = ThemeMode.light;
+      }
+      ThemeHelper.changeSystemUiOverlayStyle(context);
 
-        emit(MainChangeThemeState());
-      },
-    );
+      emit(MainChangeThemeState());
+    });
   }
 
   /// gets the saved theme mode
   Future<void> getSavedThemeMode() async {
     final response = await _getSavedThemeModeUseCase.call(NoParameters());
-    response.fold(
-      (failure) => currentThemeMode = ThemeMode.system,
-      (value) {
-        if (value == ThemeMode.dark) {
-          currentThemeMode = ThemeMode.dark;
-        } else if (value == ThemeMode.light) {
-          currentThemeMode = ThemeMode.light;
-        }
-        emit(MainGetThemeModeState());
-      },
-    );
+    response.fold((failure) => currentThemeMode = ThemeMode.system, (value) {
+      if (value == ThemeMode.dark) {
+        currentThemeMode = ThemeMode.dark;
+      } else if (value == ThemeMode.light) {
+        currentThemeMode = ThemeMode.light;
+      }
+      emit(MainGetThemeModeState());
+    });
   }
 
   /// gets the saved language
   Future<void> getSavedLang() async {
     final response = await _getSavedLangUseCase.call(NoParameters());
-    response.fold(
-      (failure) => currentLangCode = Language.en,
-      (value) {
-        currentLangCode = value;
-        emit(MainGetLocaleState());
-      },
-    );
+    response.fold((failure) => currentLangCode = Language.en, (value) {
+      currentLangCode = value;
+      emit(MainGetLocaleState());
+    });
   }
 
   /// changes the language

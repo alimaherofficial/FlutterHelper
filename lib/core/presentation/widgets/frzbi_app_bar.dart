@@ -51,11 +51,7 @@ class FrzbiAppBar extends StatelessWidget implements PreferredSizeWidget {
         IconButton(
           padding: EdgeInsets.symmetric(horizontal: 24.fw),
           onPressed: () {},
-          icon: SvgPicture.asset(
-            actionIcon,
-            height: 40.fh,
-            width: 32.fw,
-          ),
+          icon: SvgPicture.asset(actionIcon, height: 40.fh, width: 32.fw),
         ),
       ],
     );

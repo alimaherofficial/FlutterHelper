@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:helper/core/utils/app_colors.dart';
-import 'package:helper/features/Splash/presentation/cubit/main/main_cubit.dart';
+import 'package:helper/features/splash/presentation/cubit/main/main_cubit.dart';
 
 /// A utility class for managing theme-related functionalities.
 class ThemeHelper {
