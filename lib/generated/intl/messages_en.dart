@@ -24,39 +24,50 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "badCertificateWithApiserver": MessageLookupByLibrary.simpleMessage(
-            "Bad certificate with ApiServer"),
-        "connectionTimeoutWithApiserver": MessageLookupByLibrary.simpleMessage(
-            "Connection timeout with ApiServer"),
-        "copiedToClipboard":
-            MessageLookupByLibrary.simpleMessage("Copied to clipboard"),
-        "couldNotFindIdTokenFromGeneratedCredential":
-            MessageLookupByLibrary.simpleMessage(
-                "Could not find ID Token from generated credential."),
-        "failedToInitializeSupabaseE": m0,
-        "failedToSignInWithGoogle": MessageLookupByLibrary.simpleMessage(
-            "Failed to sign in with Google."),
-        "internalServerErrorPleaseTryLater":
-            MessageLookupByLibrary.simpleMessage(
-                "Internal Server error, Please try later"),
-        "noInternetConnection":
-            MessageLookupByLibrary.simpleMessage("No internet connection"),
-        "oppsThereWasAnErrorPleaseLoginAgain":
-            MessageLookupByLibrary.simpleMessage(
-                "Opps There was an Error, Please Login again"),
-        "oppsThereWasAnErrorPleaseTryAgain":
-            MessageLookupByLibrary.simpleMessage(
-                "Opps There was an Error, Please try again"),
-        "receiveTimeoutWithApiserver": MessageLookupByLibrary.simpleMessage(
-            "Receive timeout with ApiServer"),
-        "requestToApiserverWasCanceled": MessageLookupByLibrary.simpleMessage(
-            "Request to ApiServer was canceled"),
-        "sendTimeoutWithApiserver":
-            MessageLookupByLibrary.simpleMessage("Send timeout with ApiServer"),
-        "tryAgain": MessageLookupByLibrary.simpleMessage("Try Again"),
-        "unexpectedErrorPleaseTryAgain": MessageLookupByLibrary.simpleMessage(
-            "Unexpected Error, Please try again!"),
-        "unknownErrorWithApiserver":
-            MessageLookupByLibrary.simpleMessage("Unknown error with ApiServer")
-      };
+    "badCertificateWithApiserver": MessageLookupByLibrary.simpleMessage(
+      "Bad certificate with ApiServer",
+    ),
+    "connectionTimeoutWithApiserver": MessageLookupByLibrary.simpleMessage(
+      "Connection timeout with ApiServer",
+    ),
+    "copiedToClipboard": MessageLookupByLibrary.simpleMessage(
+      "Copied to clipboard",
+    ),
+    "couldNotFindIdTokenFromGeneratedCredential":
+        MessageLookupByLibrary.simpleMessage(
+          "Could not find ID Token from generated credential.",
+        ),
+    "failedToInitializeSupabaseE": m0,
+    "failedToSignInWithGoogle": MessageLookupByLibrary.simpleMessage(
+      "Failed to sign in with Google.",
+    ),
+    "internalServerErrorPleaseTryLater": MessageLookupByLibrary.simpleMessage(
+      "Internal Server error, Please try later",
+    ),
+    "noInternetConnection": MessageLookupByLibrary.simpleMessage(
+      "No internet connection",
+    ),
+    "oppsThereWasAnErrorPleaseLoginAgain": MessageLookupByLibrary.simpleMessage(
+      "Opps There was an Error, Please Login again",
+    ),
+    "oppsThereWasAnErrorPleaseTryAgain": MessageLookupByLibrary.simpleMessage(
+      "Opps There was an Error, Please try again",
+    ),
+    "receiveTimeoutWithApiserver": MessageLookupByLibrary.simpleMessage(
+      "Receive timeout with ApiServer",
+    ),
+    "requestToApiserverWasCanceled": MessageLookupByLibrary.simpleMessage(
+      "Request to ApiServer was canceled",
+    ),
+    "sendTimeoutWithApiserver": MessageLookupByLibrary.simpleMessage(
+      "Send timeout with ApiServer",
+    ),
+    "tryAgain": MessageLookupByLibrary.simpleMessage("Try Again"),
+    "unexpectedErrorPleaseTryAgain": MessageLookupByLibrary.simpleMessage(
+      "Unexpected Error, Please try again!",
+    ),
+    "unknownErrorWithApiserver": MessageLookupByLibrary.simpleMessage(
+      "Unknown error with ApiServer",
+    ),
+  };
 }

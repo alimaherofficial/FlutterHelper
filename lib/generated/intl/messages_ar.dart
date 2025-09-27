@@ -24,12 +24,14 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "copiedToClipboard":
-            MessageLookupByLibrary.simpleMessage("Copied to clipboard"),
-        "couldNotFindIdTokenFromGeneratedCredential":
-            MessageLookupByLibrary.simpleMessage(
-                "Could not find ID Token from generated credential."),
-        "failedToInitializeSupabaseE": m0,
-        "tryAgain": MessageLookupByLibrary.simpleMessage("Try Again")
-      };
+    "copiedToClipboard": MessageLookupByLibrary.simpleMessage(
+      "Copied to clipboard",
+    ),
+    "couldNotFindIdTokenFromGeneratedCredential":
+        MessageLookupByLibrary.simpleMessage(
+          "Could not find ID Token from generated credential.",
+        ),
+    "failedToInitializeSupabaseE": m0,
+    "tryAgain": MessageLookupByLibrary.simpleMessage("Try Again"),
+  };
 }

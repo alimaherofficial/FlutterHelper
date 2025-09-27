@@ -1,0 +1,7 @@
+# Flutter Packages
+
+auto_route,auto_size_text,cached_network_image,crypto,cupertino_icons,dartz,dio,equatable,firebase_analytics,firebase_core,firebase_crashlytics,flag,flutter,flutter_bloc,flutter_dotenv,flutter_localization,flutter_localizations,flutter_svg,get_it,google_fonts,google_sign_in,injectable,intl,isar,isar_flutter_libs,logger,lottie,path_provider,pretty_dio_logger,shimmer,sign_in_with_apple,sizer,supabase_flutter,upgrader,url_launcher
+
+## Dev Dependencies
+
+auto_route_generator,build_runner,change_app_package_name,flutter_test,injectable_generator,isar_generator,very_good_analysis
